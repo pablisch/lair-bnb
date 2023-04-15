@@ -1,17 +1,17 @@
 # MakersBnB
 
-## Database information
+### Database information
 
 The databases for this project are `makersbnb` and `makersbnb_test`.
 
-## Setup and run tests
+### Setup and run tests
 ```
 # Clone [repo](https://github.com/pablisch/makersbnb) and install gems
 bundle install
 # To run tests
 rspec
 ```
-## Technologies used in this project
+### Technologies used in this project
 
 * Ruby
 * RSpec
