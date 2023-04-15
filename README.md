@@ -1,4 +1,16 @@
-# MakersBnB Project Seed
+# MakersBnB
+
+## Database information
+
+The databases for this project are `makersbnb` and `makersbnb_test`.
+
+
+
+
+
+
+
+# MakersBnB Project Seed instructions
 
 This repo contains the seed codebase for the MakersBnB project in Ruby (using Sinatra and RSpec).
 
