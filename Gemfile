@@ -4,6 +4,11 @@ source "https://rubygems.org"
 
 # gem "rails"
 
+group :test do
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
+end
+
 gem "sinatra", "~> 2.2"
 gem "sinatra-contrib", "~> 2.2"
 gem "pg", "~> 1.3"
