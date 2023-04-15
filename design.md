@@ -28,9 +28,9 @@ See lower down for 'nice to haves'.
 
 ### Tables
 
-`users` - id, username, [name], [mobile], [email], [passord]
-`spaces` - id, space_name, description, price, user_id
-`bookings` - id, date (start_date), guest (user_id of guest, default = 0), space, user_id (owner user_id)
+`users` - id, username, [name], [mobile], [email], [passord]       
+`spaces` - id, space_name, description, price, user_id       
+`bookings` - id, date (start_date), guest (user_id of guest, default = 0), space, user_id (owner user_id)       
 
 ### Nice to have specs
 
