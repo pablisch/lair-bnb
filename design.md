@@ -14,17 +14,17 @@ See lower down for 'nice to haves'.
 
 ### User story
 
-> As a [user], I want to be able to [sign_in].
-> As a user, I want to be able to list a [new_space].
-> As a user, I want to be able to list {mulitple_spaces}.
-> As a user, I want to be able to [name] {a space}.
-> As a user, I want to be able to provide a short [description] of a space.
-> As a user, I want to be able to provide a [price] per night.
-> As a user, I want to be able to offer a range of [dates] where the space is a [available].
-> As a user, I want to be able to request to [hire] a space for {one night}.
-> As a user, I want my hire request {approved} by the owner user.
-> As a user, I want my hired space to show as {unavailable} for dates when a hire has been {approved}.
-> As a user, I want my hired space to show as {available} {until} a hire request has been {approved}.
+> As a [user], I want to be able to [sign_in].       
+> As a user, I want to be able to list a [new_space].        
+> As a user, I want to be able to list {mulitple_spaces}.        
+> As a user, I want to be able to [name] {a space}.        
+> As a user, I want to be able to provide a short [description] of a space.        
+> As a user, I want to be able to provide a [price] per night.        
+> As a user, I want to be able to offer a range of [dates] where the space is a [available].        
+> As a user, I want to be able to request to [hire] a space for {one night}.        
+> As a user, I want my hire request {approved} by the owner user.        
+> As a user, I want my hired space to show as {unavailable} for dates when a hire has been {approved}.        
+> As a user, I want my hired space to show as {available} {until} a hire request has been {approved}.        
 
 ### Tables
 
