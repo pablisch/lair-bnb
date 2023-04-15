@@ -5,17 +5,12 @@
 The databases for this project are `makersbnb` and `makersbnb_test`.
 
 ## Setup and run tests
-
-Clone [repo](https://github.com/pablisch/makersbnb)
-Install gems
 ```
+# Clone [repo](https://github.com/pablisch/makersbnb) and install gems
 bundle install
-```
-To run tests
-```
+# To run tests
 rspec
 ```
-
 ## Technologies used in this project
 
 * Ruby
