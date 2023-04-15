@@ -4,11 +4,33 @@
 
 The databases for this project are `makersbnb` and `makersbnb_test`.
 
+## Setup and run tests
 
+Clone [repo](https://github.com/pablisch/makersbnb)
+Install gems
+```
+bundle install
+```
+To run tests
+```
+rspec
+```
 
+## Technologies used in this project
 
+* Ruby
+* RSpec
+* ERB
+* Sinatra
+* Rack
+* Git
+* CSS
+* Postgres
 
-
+and assisted by:
+* GitHub
+* Postman
+* TablePlus
 
 # MakersBnB Project Seed instructions
 
