@@ -3,8 +3,23 @@
 ### Database information
 
 The databases for this project are `makersbnb` and `makersbnb_test`.
-
 Table and seeds information in spec folder.
+
+To create local DBs
+
+ ```sh
+ createdb makersbnb
+ createdb makersbnb_test
+ ```
+
+ Then, to create and populate the tables run the following:
+
+ ```sh
+psql -h 127.0.0.1 makersbnb < spec/tables.sql
+psql -h 127.0.0.1 makersbnb < spec/seeds.sql
+psql -h 127.0.0.1 makersbnb_test < spec/tables.sql
+psql -h 127.0.0.1 makersbnb_test < spec/seeds.sql
+ ```
 
 ### Setup and run tests
 ```
