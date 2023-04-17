@@ -4,6 +4,8 @@
 
 The databases for this project are `makersbnb` and `makersbnb_test`.
 
+Table and seeds information in spec folder.
+
 ### Setup and run tests
 ```
 # Clone [repo](https://github.com/pablisch/makersbnb) and install gems
