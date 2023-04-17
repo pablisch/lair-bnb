@@ -1,14 +1,14 @@
 TRUNCATE TABLE users, spaces, bookings RESTART IDENTITY; 
 
 INSERT INTO users (username, email, password) VALUES 
-('Amber', 'amber@email.com', 'Password1'),
-('Billy', 'billy@email.com', 'Password2'),
-('Caleb', 'caleb@email.com', 'Password3'),
-('Dennis', 'dennis@email.com', 'Password4'),
-('Emily', 'emily@email.com', 'Password5'),
-('Faizah', 'faizah@email.com', 'Password6'),
-('Greta', 'greta@email.com', 'Password7'),
-('Hande', 'hande@email.com', 'Password8')
+('Amber', 'amber@example.com', 'Password1'),
+('Billy', 'billy@example.com', 'Password2'),
+('Caleb', 'caleb@example.com', 'Password3'),
+('Dennis', 'dennis@example.com', 'Password4'),
+('Emily', 'emily@example.com', 'Password5'),
+('Faizah', 'faizah@example.com', 'Password6'),
+('Greta', 'greta@example.com', 'Password7'),
+('Hande', 'hande@example.com', 'Password8')
 ;
 
 INSERT INTO spaces (name, description, price, available_from, available_to, user_id) VALUES 

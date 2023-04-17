@@ -25,7 +25,7 @@ CREATE TABLE spaces (
 CREATE TABLE bookings (
   id SERIAL PRIMARY KEY,
   booking_date date,
-  confirmed text,
+  status text,
   space_id int,
   guest_id int,
   constraint fk_space foreign key(space_id) references spaces(id) on delete cascade,
