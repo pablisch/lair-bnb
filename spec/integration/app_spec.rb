@@ -26,12 +26,23 @@ describe Application do
     end
   end
 
-  context 'GET /login' do
+  context 'GET-POST /login' do
     it 'displays login page' do
       response = get('/login')
 
       expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Enter your login details</h1>')
+    end
 
+    it 'post the users input in the form and redirects to spaces' do
+      response = post(
+        '/login', 
+      email: 'amber@example.com', 
+      password: 'Password1' 
+      )
+
+      expect(response.status).to eq(200)
+      # requires /spaces HTML code to expect (response.body)
     end
   end
 end
