@@ -25,4 +25,13 @@ describe Application do
       expect(response.status).to eq(200)
     end
   end
+
+  context 'GET /login' do
+    it 'displays login page' do
+      response = get('/login')
+
+      expect(response.status).to eq(200)
+
+    end
+  end
 end
