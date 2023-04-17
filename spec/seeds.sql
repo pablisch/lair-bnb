@@ -19,7 +19,7 @@ INSERT INTO spaces (name, description, price, available_from, available_to, user
 ('Orthanc', 'Stunning white tower among a lively woodland setting.', 200, '2023-05-02', '2023-05-16', 5)
 ;
 
-INSERT INTO bookings (booking_date, confirmed, space_id, guest_id) VALUES 
+INSERT INTO bookings (booking_date, status, space_id, guest_id) VALUES 
 ('2023-05-10', true, 1, 2),
 ('2023-05-11', true, 2, 7),
 ('2023-05-07', true, 3, 1),
