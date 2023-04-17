@@ -26,6 +26,15 @@ describe Application do
     end
   end
 
+  context 'GET /spaces' do
+    it 'should get the spaces page' do
+      response = get('/spaces')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Book a Space</h1>')
+    end
+  end
+
   context 'GET-POST /login' do
     it 'displays login page' do
       response = get('/login')
