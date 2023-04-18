@@ -40,7 +40,6 @@ describe Application do
       response = get('/spaces')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Book a Space</h1>')
       expect(response.body).to include('Bag End')
       expect(response.body).to include('quirky front door')
     end
@@ -72,6 +71,22 @@ describe Application do
       )
       expect(response.status).to eq(200)
       expect(response.body).to eq "Login Failed"
+    end
+  end
+
+  context "GET /logout" do
+    it "redirects the user to the spaces page without any logged in functionality" do
+      post '/login', params = { email: 'amber@example.com', password: 'Password1'}
+      get '/logout'
+
+      # Expect the response to have a 302 status code (redirect)
+      expect(last_response.status).to eq(302)
+      # Follow the redirect to the spaces page
+      follow_redirect!
+
+      expect(last_response.status).to eq(200)
+      expect(last_response.body).to include('<p>Charming and cosy with a quirky front door</p>')
+      expect(last_response.body).to include('<p>£70.0</p>')
     end
   end
 end

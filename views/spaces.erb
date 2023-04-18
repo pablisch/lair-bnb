@@ -9,6 +9,8 @@
       <a href="/logout">logout</a><br>
 
       <h1>Book a Space</h1>
+
+      <h1>Spaces</h1>
         <% @spaces.each do |space| %>
           <div class="space">
             <a href = "/spaces/<%= space.id %>"><h1><%= space.name %></h1></a>
