@@ -16,9 +16,9 @@ class SpaceRepository
     return space = space_builder(result_set[0])
   end
 
-  def all_except_owner(id)
+  def all_except_owner(user_id)
     sql = 'SELECT * FROM spaces WHERE user_id != $1;'
-    params = [id]
+    params = [user_id]
     results = DatabaseConnection.exec_params(sql, params)
 
     spaces = []

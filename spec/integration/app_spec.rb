@@ -45,7 +45,12 @@ describe Application do
     end
 
     it 'returns spaces not including the current users spaces' do
-      login_user_1()
+      response = post(
+        '/login', 
+      email: 'amber@example.com', 
+      password: 'Password1' 
+      )
+      expect(response.status).to eq 302
       response = get(
         '/spaces')
       expect(response.status).to eq(200)
@@ -93,14 +98,5 @@ describe Application do
       expect(last_response.body).to include('<p>Charming and cosy with a quirky front door</p>')
       expect(last_response.body).to include('<p>£70.0</p>')
     end
-  end
-
-  def login_user_1
-    response = post(
-        '/login', 
-      email: 'amber@example.com', 
-      password: 'Password1' 
-      )
-      expect(response.status).to eq 302
   end
 end

@@ -13,8 +13,6 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  enable :sessions
-
   get '/' do
     return erb(:index)
   end
@@ -29,6 +27,7 @@ class Application < Sinatra::Base
 
     repo = UserRepository.new
     user = repo.find_by_email(email)
+    p user
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
@@ -48,7 +47,7 @@ class Application < Sinatra::Base
     if session[:email].nil?
       @spaces = repo.all()
     else
-      @spaces = repo.all_except_owner(1)#(session[:id])
+      @spaces = repo.all_except_owner(session[:id])
     end
 
     return erb(:spaces)
