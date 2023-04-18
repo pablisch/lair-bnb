@@ -45,12 +45,7 @@ describe Application do
     end
 
     it 'returns spaces not including the current users spaces' do
-      response = post(
-        '/login', 
-      email: 'amber@example.com', 
-      password: 'Password1' 
-      )
-      expect(response.status).to eq 302
+      login_user_1()
       response = get(
         '/spaces')
       expect(response.status).to eq(200)
@@ -79,8 +74,8 @@ describe Application do
         '/spaces')
       expect(response.status).to eq(200)
       expect(response.body).to include('<h1>Book a Space</h1>')
-      expect(response.body).to include('Bag End')
-      expect(response.body).to include('quirky front door')
+      expect(response.body).to include('Moria')
+      expect(response.body).to include('Stunning white tower')
     end
   end
 
@@ -98,5 +93,14 @@ describe Application do
       expect(last_response.body).to include('<p>Charming and cosy with a quirky front door</p>')
       expect(last_response.body).to include('<p>£70.0</p>')
     end
+  end
+
+  def login_user_1
+    response = post(
+        '/login', 
+      email: 'amber@example.com', 
+      password: 'Password1' 
+      )
+      expect(response.status).to eq 302
   end
 end
