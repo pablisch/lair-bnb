@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>MakersBnB Spaces</title>
-        <link rel="stylesheet" href="/style.css" >
-    </head>
-    <body>
-      <h1>Spaces</h1>
-        <% @spaces.each do |space| %>
+ <%# <% @spaces.each do |space| %>
           <div class="space">
             <h1><%= space.name %></h1>
             <p><%= space.description %></p>
             <p>£<%= space.price %></p>
             <p>Available from <%= space.available_from %> to <%= space.available_to %></p>
           </div>
-        <% end %>
-    </body>
-</html>
+        <% end %> %>
