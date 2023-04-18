@@ -14,6 +14,8 @@ class Application < Sinatra::Base
     enable :sessions
   end
 
+  enable :sessions
+
   get '/' do
     return erb(:index)
   end
@@ -36,6 +38,11 @@ class Application < Sinatra::Base
     else
       return redirect '/spaces'
     end
+  end
+
+  get '/logout' do
+    session.clear
+    redirect ('/spaces')
   end
 
   get '/spaces' do
