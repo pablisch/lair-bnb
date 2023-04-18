@@ -1,4 +1,4 @@
-require_relative 'space'
+require_relative './space'
 
 class SpaceRepository
   def all 
