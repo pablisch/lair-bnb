@@ -2,17 +2,21 @@
 <html>
     <head>
         <title>MakersBnB</title>
-
-        <!--
-            Head to https://github.com/makersacademy/web-applications/blob/main/pills/loading_css_or_static_files.md
-            If you're wondering how the CSS file below is being loaded.
-        -->
         <link rel="stylesheet" href="/style.css" >
     </head>
         <a href="/login">login</a><br>
         <a href="/logout">logout</a><br>
     <body>
-        <p>This is the homepage.</h1>
-        <a href="/create">create</a><br>
+        <h1>Welcome to Flair BnB</h1><br>
+        <p><a href="/create">create</a></p><br>
+        <h2>Spaces</h2>
+        <% @spaces.each do |space| %>
+          <div class="space">
+            <h1><%= space.name %></h1>
+            <p><%= space.description %></p>
+            <p>£<%= space.price %></p>
+            <p>Available from <%= space.available_from %> to <%= space.available_to %></p>
+          </div>
+        <% end %>
     </body>
 </html>

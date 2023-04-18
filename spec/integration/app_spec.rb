@@ -23,6 +23,7 @@ describe Application do
       response = get('/')
 
       expect(response.status).to eq(200)
+      expect(response.body).to include('Welcome to Flair BnB')
     end
   end
 
@@ -60,7 +61,7 @@ describe Application do
       password: 'Password1' 
       )
 
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(302)
       # requires /spaces HTML code to expect (response.body)
     end
   end
