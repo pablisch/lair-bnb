@@ -17,5 +17,6 @@ describe UserRepository do
 
     expect(user.username).to eq('Amber')
     expect(user.email).to eq('amber@example.com')
+    expect(user.id).to eq(1)
   end
 end
