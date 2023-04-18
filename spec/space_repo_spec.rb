@@ -42,6 +42,8 @@ RSpec.describe SpaceRepository do
       
       results = repo.all
       expect(results.length).to eq 6
+      expect(results.last.name).to eq('Test Space')
+      expect(results.last.description).to eq('Space Description')
     end
   end
 

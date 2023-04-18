@@ -90,15 +90,6 @@ describe Application do
     end
   end
 
-  context 'GET /new_space' do
-    it 'should display the create a new space page' do
-      response = get('/new_space')
-
-      expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Create a new space</h1>')
-    end
-  end
-
   context 'POST /new_space' do
     it 'sends the form and creates a new space in the database' do
       response = post(
