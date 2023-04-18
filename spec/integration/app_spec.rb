@@ -71,7 +71,7 @@ describe Application do
       response = get('/new_space')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<p>Create a new space</p>')
+      expect(response.body).to include('<h1>Create a new space</h1>')
     end
   end
 
@@ -80,7 +80,23 @@ describe Application do
       response = get('/new_space')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<p>Create a new space</p>')
+      expect(response.body).to include('<h1>Create a new space</h1>')
+    end
+  end
+
+  context 'POST /new_space' do
+    it 'sends the form and creates a new space in the database' do
+      response = post('/new_space', params = {
+        name: 'Test Name',
+        description: 'Test Description',
+        price: 10,
+        available_from: '2023-05-01',
+        available_to: '2023-05-15',
+        user_id: 2
+      })
+
+      expect(response.status).to eq(302)
+      expect(response.body).to include('New Space Listed')
     end
   end
 end

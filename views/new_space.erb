@@ -10,16 +10,20 @@
         <link rel="stylesheet" href="/style.css" >
     </head>
     <body>
+         <% flash.each do |type, message| %>
+        <div data-alert class="flash <%= type %> alert-box radius">
+            <%= message %>
+            <a href="" class="close">&times;</a>
+        </div>
+        <% end %>
         <h1>Create a new space</h1>
-
+        <form method="POST" action="/new_space">
+            <label>Name </label><input type="text" name="name"/><br>
+            <label>Description </label><input type="text" name="description"/><br>
+            <label>Price </label><input type="text" name="price"/><br>
+            <label>Available From </label><input type="text" name="available_from"><br>
+            <label>Available To </label><input type="text" name="available_to"><br>
+            <input type="submit" value="Create Space">
+        </form>
     </body>
 </html>
-
-
-<%# <form method="POST" action="/new_space">
-
-<label>Space Name:</label>
-<input type="text" name="Space Name"/><br>
-
-<input type="submit" value="Create Space">
-</form> %>

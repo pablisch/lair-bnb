@@ -26,7 +26,7 @@ RSpec.describe SpaceRepository do
     end
   end
 
-  context "#new" do
+  context "#create" do
     it "creates a new space" do
       repo = SpaceRepository.new
       space = Space.new
@@ -38,7 +38,7 @@ RSpec.describe SpaceRepository do
       space.available_to = "2023-05-01"
       space.user_id = 1
 
-      repo.new(space)
+      repo.create(space)
       
       results = repo.all
       expect(results.length).to eq 6
