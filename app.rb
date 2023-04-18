@@ -9,8 +9,6 @@ DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 class Application < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
-    # also_reload 'lib/space_repo'
-    # also_reload 'lib/user_repo'
   end
 
   get '/' do
