@@ -10,6 +10,12 @@ class SpaceRepository
     return spaces
   end
 
+  def create(space)
+    sql = 'INSERT INTO spaces (name, description, price, available_from, available_to, user_id) VALUES ($1, $2, $3, $4, $5, $6);'
+    params = [space.name, space.description, space.price, space.available_from, space.available_to, space.user_id]
+    DatabaseConnection.exec_params(sql, params)
+  end
+
   def find_by_id(id)
     sql = 'SELECT * FROM spaces WHERE id = $1'
     result_set = DatabaseConnection.exec_params(sql, [id])
