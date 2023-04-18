@@ -11,6 +11,7 @@ class Application < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
     register Sinatra::Flash
+    enable :sessions
   end
 
   get '/' do
@@ -31,9 +32,9 @@ class Application < Sinatra::Base
     if user && email == user.email && password == user.password
       session[:email] = user.email
 
-      return erb(:index) # need to change to spaces later
+      return redirect '/spaces' # need to change to spaces later
     else
-      return erb(:index)
+      return redirect '/spaces'
     end
   end
 

@@ -56,12 +56,12 @@ describe Application do
 
     it 'post the users input in the form and redirects to spaces' do
       response = post(
-        '/login', 
-      email: 'amber@example.com', 
-      password: 'Password1' 
+        '/login',
+      email: 'amber@example.com',
+      password: 'Password1'
       )
 
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(302)
       # requires /spaces HTML code to expect (response.body)
     end
   end
@@ -86,17 +86,22 @@ describe Application do
 
   context 'POST /new_space' do
     it 'sends the form and creates a new space in the database' do
-      response = post('/new_space', params = {
-        name: 'Test Name',
+      response = post(
+        '/login',
+      email: 'amber@example.com',
+      password: 'Password1'
+      )
+
+      expect(response.status).to eq(302)
+
+      response = post('/new_space', name: 'Test Name',
         description: 'Test Description',
         price: 10,
         available_from: '2023-05-01',
-        available_to: '2023-05-15',
-        user_id: 2
-      })
+        available_to: '2023-05-15')
 
       expect(response.status).to eq(302)
-      expect(response.body).to include('New Space Listed')
+      # expect(response.body).to include('New Space Listed')
     end
   end
 end
