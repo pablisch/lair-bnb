@@ -7,6 +7,8 @@ require_relative 'lib/database_connection'
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
 class Application < Sinatra::Base
+  enable :sessions
+  
   configure :development do
     register Sinatra::Reloader
   end
@@ -28,16 +30,19 @@ class Application < Sinatra::Base
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
-
-      return erb(:index) # need to change to spaces later
-    else
-      return erb(:index)
+      session[:id] = user.id
     end
+    
+    return redirect('/spaces')
   end
 
   get '/spaces' do
     repo = SpaceRepository.new
-    @spaces = repo.all()
+    if session[:email].nil?
+      @spaces = repo.all()
+    else
+      @spaces = repo.all_except_owner(1)#(session[:id])
+    end
 
     return erb(:spaces)
   end
