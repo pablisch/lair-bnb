@@ -53,9 +53,9 @@ describe Application do
       )
       expect(response.status).to eq 302
       response = get(
-        '/spaces')
+        '/')
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Book a Space</h1>')
+      expect(response.body).to include('<h1>Spaces</h1>')
       expect(response.body).not_to include('Bag End')
       expect(response.body).not_to include('quirky front door')
     end
@@ -77,9 +77,9 @@ describe Application do
       )
       expect(response.status).to eq 302
       response = get(
-        '/spaces')
+        '/')
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Book a Space</h1>')
+      expect(response.body).to include('<h1>Spaces</h1>')
       expect(response.body).to include('Moria')
       expect(response.body).to include('Stunning white tower')
 

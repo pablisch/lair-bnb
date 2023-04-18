@@ -7,12 +7,12 @@
         <a href="/login">login</a><br>
         <a href="/logout">logout</a><br>
     <body>
-        <h1>Welcome to Flair BnB</h1><br>
-        <p><a href="/create">create</a></p><br>
-        <h2>Spaces</h2>
+        <h1>Welcome to Flair BnB</h1>
+        <p><a href="/create">create</a></p>
+        <h1>Spaces</h1>
         <% @spaces.each do |space| %>
           <div class="space">
-            <h1><%= space.name %></h1>
+            <h2><%= space.name %></h2>
             <p><%= space.description %></p>
             <p>£<%= space.price %></p>
             <p>Available from <%= space.available_from %> to <%= space.available_to %></p>

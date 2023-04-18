@@ -15,7 +15,11 @@ class Application < Sinatra::Base
 
   get '/' do
     repo = SpaceRepository.new
-    @spaces = repo.all()
+    if session[:email].nil?
+      @spaces = repo.all()
+    else
+      @spaces = repo.all_except_owner(session[:id])
+    end
 
     return erb(:index)
   end
@@ -30,22 +34,18 @@ class Application < Sinatra::Base
 
     repo = UserRepository.new
     user = repo.find_by_email(email)
-    p user
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
-
-      return redirect('/') # need to change to spaces later
-    else
-      return redirect('/')
+      session[:id] = user.id
     end
     
-    return redirect('/spaces')
+    return redirect('/')
   end
 
   get '/logout' do
     session.clear
-    redirect ('/spaces')
+    redirect ('/')
   end
 
   get '/spaces' do
