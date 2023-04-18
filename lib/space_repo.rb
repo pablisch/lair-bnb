@@ -10,6 +10,12 @@ class SpaceRepository
     return spaces
   end
 
+  def find_by_id(id)
+    sql = 'SELECT * FROM spaces WHERE id = $1'
+    result_set = DatabaseConnection.exec_params(sql, [id])
+    return space = space_builder(result_set[0])
+  end
+
   private 
 
   def space_builder(record)
