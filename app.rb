@@ -13,6 +13,8 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  enable :sessions
+
   get '/' do
     return erb(:index)
   end
@@ -34,6 +36,11 @@ class Application < Sinatra::Base
     end
     
     return redirect('/spaces')
+  end
+
+  get '/logout' do
+    session.clear
+    redirect ('/spaces')
   end
 
   get '/spaces' do
