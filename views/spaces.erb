@@ -5,7 +5,9 @@
         <link rel="stylesheet" href="/style.css" >
     </head>
     <body>
-      <h1>Spaces</h1>
+      <h1>Book a Space</h1>
+      <p>session email = <%= session[:email] %></p>
+      <p>session id = <%= session[:id] %></p>
         <% @spaces.each do |space| %>
           <div class="space">
             <h1><%= space.name %></h1>
