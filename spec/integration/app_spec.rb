@@ -60,9 +60,17 @@ describe Application do
       email: 'amber@example.com', 
       password: 'Password1' 
       )
-
       expect(response.status).to eq(200)
       # requires /spaces HTML code to expect (response.body)
+    end
+
+    it 'user enters wrong email address or password, redirects to fail' do
+      response = post(
+        '/login', 
+      email: 'amber@example.com', 
+      password: 'Password' 
+      )
+      expect(response.status).to eq(200)
     end
   end
 end
