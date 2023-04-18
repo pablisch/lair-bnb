@@ -26,6 +26,22 @@ RSpec.describe SpaceRepository do
     end
   end
 
+
+  context "#all_except_owner" do
+    it "returns all space object except those owned by the logged in user" do
+      repo = SpaceRepository.new
+      results = repo.all_except_owner(1)
+      expect(results.length).to eq 3
+      expect(results[0].id).to eq 2
+      expect(results[0].name).to eq "Winterfell"
+      expect(results[0].description).to include "rustic charm"
+      expect(results[0].price).to eq 120.0
+      expect(results[0].available_from).to eq "2023-05-03"
+      expect(results[0].available_to).to eq "2023-05-17"
+      expect(results[0].user_id).to eq 2
+    end
+  end
+
   context "#create" do
     it "creates a new space" do
       repo = SpaceRepository.new
@@ -44,6 +60,7 @@ RSpec.describe SpaceRepository do
       expect(results.length).to eq 6
       expect(results.last.name).to eq('Test Space')
       expect(results.last.description).to eq('Space Description')
+
     end
   end
 

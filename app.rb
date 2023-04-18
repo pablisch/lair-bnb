@@ -8,15 +8,22 @@ require 'sinatra/flash'
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
 class Application < Sinatra::Base
+  enable :sessions
+  
   configure :development do
     register Sinatra::Reloader
     register Sinatra::Flash
     enable :sessions
   end
 
-  enable :sessions
-
   get '/' do
+    repo = SpaceRepository.new
+    if session[:email].nil?
+      @spaces = repo.all()
+    else
+      @spaces = repo.all_except_owner(session[:id])
+    end
+
     return erb(:index)
   end
 
@@ -33,21 +40,24 @@ class Application < Sinatra::Base
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
-
-      return redirect '/spaces' # need to change to spaces later
-    else
-      return redirect '/spaces'
+      session[:id] = user.id
     end
+    
+    return redirect('/')
   end
 
   get '/logout' do
     session.clear
-    redirect ('/spaces')
+    redirect ('/')
   end
 
   get '/spaces' do
     repo = SpaceRepository.new
-    @spaces = repo.all()
+    if session[:email].nil?
+      @spaces = repo.all()
+    else
+      @spaces = repo.all_except_owner(session[:id])
+    end
 
     return erb(:spaces)
   end

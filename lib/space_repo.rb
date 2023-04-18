@@ -22,6 +22,16 @@ class SpaceRepository
     return space = space_builder(result_set[0])
   end
 
+  def all_except_owner(user_id)
+    sql = 'SELECT * FROM spaces WHERE user_id != $1;'
+    params = [user_id]
+    results = DatabaseConnection.exec_params(sql, params)
+
+    spaces = []
+    results.each { |record| spaces << space_builder(record) }
+    return spaces
+  end
+
   private 
 
   def space_builder(record)

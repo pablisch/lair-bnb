@@ -23,6 +23,7 @@ describe Application do
       response = get('/')
 
       expect(response.status).to eq(200)
+      expect(response.body).to include('Welcome to Flair BnB')
     end
   end
 
@@ -43,6 +44,21 @@ describe Application do
       expect(response.body).to include('Bag End')
       expect(response.body).to include('quirky front door')
     end
+
+    it 'returns spaces not including the current users spaces' do
+      response = post(
+        '/login', 
+      email: 'amber@example.com', 
+      password: 'Password1' 
+      )
+      expect(response.status).to eq 302
+      response = get(
+        '/')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Spaces</h1>')
+      expect(response.body).not_to include('Bag End')
+      expect(response.body).not_to include('quirky front door')
+    end
   end
 
   context 'GET-POST /login' do
@@ -60,8 +76,13 @@ describe Application do
       password: 'Password1'
       )
 
-      expect(response.status).to eq(302)
-      # requires /spaces HTML code to expect (response.body)
+      expect(response.status).to eq 302
+      response = get(
+        '/')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Spaces</h1>')
+      expect(response.body).to include('Moria')
+      expect(response.body).to include('Stunning white tower')
     end
   end
 
