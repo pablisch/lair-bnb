@@ -71,6 +71,7 @@ describe Application do
       password: 'Password' 
       )
       expect(response.status).to eq(200)
+      expect(response.body).to eq "Login Failed"
     end
   end
 end

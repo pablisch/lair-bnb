@@ -31,7 +31,8 @@ class Application < Sinatra::Base
 
       return erb(:index) # need to change to spaces later
     else
-      return erb(:index)
+      return "Login Failed"
+      # need to add redirect to index later
     end
   end
 
