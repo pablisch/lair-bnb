@@ -6,8 +6,6 @@ require_relative 'lib/database_connection'
 class Application < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
-    # also_reload 'lib/space_repo'
-    # also_reload 'lib/user_repo'
   end
 
   enable :sessions
