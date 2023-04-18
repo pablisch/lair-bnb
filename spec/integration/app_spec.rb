@@ -62,7 +62,7 @@ describe Application do
 
       # Expect the response to have a 302 status code (redirect)
       expect(last_response.status).to eq(302)
-      # Follow the redirect to the homepage
+      # Follow the redirect to the spaces page
       follow_redirect!
 
       expect(last_response.status).to eq(200)
