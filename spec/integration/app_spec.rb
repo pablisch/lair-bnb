@@ -74,4 +74,13 @@ describe Application do
       expect(response.body).to include('<p>Create a new space</p>')
     end
   end
+
+  context 'GET /new_space' do
+    it 'should display the create a new space page' do
+      response = get('/new_space')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<p>Create a new space</p>')
+    end
+  end
 end
