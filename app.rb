@@ -1,7 +1,10 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require_relative 'lib/space_repo'
 require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
+
+DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
 class Application < Sinatra::Base
   configure :development do
@@ -44,5 +47,11 @@ class Application < Sinatra::Base
     @spaces = repo.all()
 
     return erb(:spaces)
+  end
+
+  get '/spaces/:id' do
+    repo = SpaceRepository.new
+    @space = repo.find_by_id(params[:id])
+    return erb(:spaces_id)
   end
 end

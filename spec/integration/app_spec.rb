@@ -26,6 +26,15 @@ describe Application do
     end
   end
 
+  context 'GET /spaces/:id' do
+    it 'should get the spaces/1 page' do
+      response = get('/spaces/1')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Charming and cosy with a quirky front door')
+    end
+  end
+
   context 'GET /spaces' do
     it 'should get the spaces page' do
       response = get('/spaces')
