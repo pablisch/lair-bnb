@@ -3,6 +3,12 @@
   <title>Login Page</title>
 </head>
 <body>
+  <% flash.each do |type, message| %>
+        <div data-alert class="flash <%= type %> alert-box radius">
+            <%= message %>
+            <a href="" class="close">&times;</a>
+        </div>
+        <% end %>
   <h1>Enter your login details</h1>
   <form method="POST" action="/login">
     <label>Enter your email</label><input type="text" name="email" required minlength="5"><br>
