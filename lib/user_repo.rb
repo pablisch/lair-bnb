@@ -2,7 +2,7 @@ require_relative './user'
 
 class UserRepository
   def find_by_email(email) 
-    sql = 'SELECT username, email, password FROM users WHERE email = $1;'
+    sql = 'SELECT id, username, email, password FROM users WHERE email = $1;'
     result_set = DatabaseConnection.exec_params(sql, [email])
 
     return nil if !result_set.ntuples.positive?
