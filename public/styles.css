@@ -45,11 +45,35 @@ nav h1 {
 
 .links {
     display: flex;
+    height: 100%;
+    align-items: center;
 }
 
 .links p {
-    margin-left: 20px;
     font-size: 20px;
+}
+
+.login {
+  width: 80px;
+}
+
+.logout {
+  width: 80px;
+}
+
+.new_space {
+  width: 160px;
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.navlink:hover {
+  background: #f5f4f4;
 }
 
 .line {
@@ -57,12 +81,14 @@ nav h1 {
   min-height: 1px;
 }
 
-a {
+nav a {
     text-decoration: none;
     color: #474646;
-}
-
-header a {
+    text-align: center;
+  }
+  
+  header a {
+  text-decoration: none;
   color: #6f6c6c;
 }
 
@@ -112,5 +138,39 @@ header h1 {
 }
 
 input {
-  margin-bottom: 6px;
+  margin: 0 0 10px 15px;
 }
+
+.right-align {
+  text-align: right;
+}
+
+.text {
+  font-family: 'Raleway', sans-serif;
+  width: 200px;
+  padding: 3px;
+  margin: 0 0 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  background-color: #fff;
+  color: #7c7c7c;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #b1aeae;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #6e6e6e;
+  color: #fff;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* h1 {
+  color: crimson;
+} */

@@ -21,12 +21,14 @@
       </div>
 
   <header>
-        <div class="centre">
-        <h1>Enter your login details</h1>
-            <form method="POST" action="/login">
-              <label>Enter your email</label><input type="text" name="email" required minlength="5"><br>
-              <label>Enter your password</label><input type="text" name="password" required minlength="5"><br>
-              <input type="submit" value="Login">
+        <div class="centre container column">
+        <h2>Enter your login details</h2>
+            <form method="POST" action="/login" class="right-align">
+              <label>Enter your email</label>
+              <input class="text" type="text" name="email" required minlength="5"><br>
+              <label>Enter your password</label>
+              <input class="text" type="text" name="password" required minlength="5"><br>
+              <input class="button" type="submit" value="Login">
             </form>
         </div>
       </header>
