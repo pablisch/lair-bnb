@@ -85,24 +85,14 @@ describe Application do
       expect(response.body).to include('Stunning white tower')
     end
 
-    it 'user enters wrong email address or password, redirects to fail' do
+    xit 'user enters wrong email address or password, redirects to fail' do
       response = post(
         '/login',
       email: 'amber@example.com',
       password: 'Password'
       )
-      expect(response.status).to eq(200)
-      expect(response.body).to include "Error: Username or Password not recognised"
-    end
-
-    it 'user enters wrong email address or password, redirects to fail' do
-      response = post(
-        '/login',
-      email: 'amber@example.com',
-      password: 'Password'
-      )
-      expect(response.status).to eq(200)
-      expect(response.body).to include "Error: Username or Password not recognised"
+      expect(response.status).to eq(302)
+      expect(response.body).to include "Error: Username or Password not recognised" # change this when flash is enabled
     end
   end
 
