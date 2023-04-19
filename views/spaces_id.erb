@@ -7,12 +7,21 @@
 <body>
   <h1>Space: <%= @space.name %></h1>
   <p> <%= @space.description %></p>
-  <p> Available Dates: <%= @available_dates %></p>
+  <p> Available Dates:</p> 
   <form method="POST" action="/spaces/:id">
+    <select>
+      <% @available_dates.each do |date| %>
+      <option><%= date %></option>
+      <%  end %>
+    </select>
     <input type="submit" value="Request to book">
-    <!-- <input type="text" id="datepicker" name="booking_date"> -->
     <input type = "hidden" name = "status" value = "pending" />
-    <input type = "date" name = "booking_date" value = "pending" />
   </form>
+  <!-- <form method="POST" action="/spaces/:id">
+    <input type="submit" value="Request to book"> 
+    <input type="text" id="datepicker" name="booking_date"> 
+    <input type = "hidden" name = "status" value = "pending" />
+     <input type = "date" name = "booking_date" value = "pending" /> 
+  </form> -->
 </body>
 </html>
