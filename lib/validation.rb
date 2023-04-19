@@ -10,8 +10,8 @@ module Validation
         false
     end
 
-    # validation_lenght_of_sting used to stop large sting insertion.
-    def validation_lenght_of_sting(input)
+    # validation_length_of_sting used to stop large sting insertion.
+    def validation_length_of_sting(input)
         return false if input.length.between?(8, 25)
         true
     end
