@@ -43,7 +43,7 @@ class Application < Sinatra::Base
       session[:id] = user.id
 
     else
-      @msg = "Error: Username or Password not recognised"
+      flash[:login_error] = "Error: Username or Password not recognised"
       redirect('/login')
     end
 
