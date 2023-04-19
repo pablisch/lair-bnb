@@ -2,16 +2,26 @@
 <html>
     <head>
         <title>MakersBnB</title>
-        <link rel="stylesheet" href="/style.css" >
+        <link rel="stylesheet" href="/styles.css" >
     </head>
         <p style="color: red;"><%= @msg %></p>
-        <a href="/login">login</a><br>
-        <a href="/logout">logout</a><br>
     <body>
+      <nav>
+      <div class="container centre nav-height">
         <h1>Welcome to Flair BnB</h1>
+        <div class="links">
+          <p><a href="/login">login</a></p>
+        <p><a href="/logout">logout</a></p>
         <p><a href="/new_space">Create Space</a></p>
-        <h1>Spaces</h1>
-        <% @spaces.each do |space| %>
+        </div>
+      </div>
+      </nav>
+
+      <header>
+        <div class="centre">
+          <h1>Spaces</h1>
+        <div class="container column">
+          <% @spaces.each do |space| %>
           <div class="space">
             <h2><a href = "/spaces/<%= space.id %>"><%= space.name %></a></h2>
             <p><%= space.description %></p>
@@ -19,5 +29,9 @@
             <p>Available from <%= space.available_from %> to <%= space.available_to %></p>
           </div>
         <% end %>
+        </div>
+        </div>
+      </header>
+        
     </body>
 </html>
