@@ -2,16 +2,17 @@
 <head>
 
   <title>Space: <%= @space.id %></title>
+
 </head>
 <body>
   <h1>Space: <%= @space.name %></h1>
   <p> <%= @space.description %></p>
-  <form method="POST" action="/spaced_id">
-
-    <label>Enter your date </label><input type="text" name="available_from" required><br>
+  <p> Available Dates: <%= @available_dates %></p>
+  <form method="POST" action="/spaces/:id">
     <input type="submit" value="Request to book">
-  </form>
-
+    <!-- <input type="text" id="datepicker" name="booking_date"> -->
+    <input type = "hidden" name = "status" value = "pending" />
+    <input type = "date" name = "booking_date" value = "pending" />
   </form>
 </body>
 </html>

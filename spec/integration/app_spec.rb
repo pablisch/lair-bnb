@@ -36,6 +36,13 @@ describe Application do
     end
   end
 
+  context 'POST /spaces/id' do
+    it 'should return the form of a new booking' do
+      # test for the post spaces submission, should redirect back to index
+    end
+  end
+
+
   context 'GET /spaces' do
     it 'should get the spaces page' do
       response = get('/spaces')

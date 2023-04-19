@@ -91,7 +91,26 @@ class Application < Sinatra::Base
 
   get '/spaces/:id' do
     repo = SpaceRepository.new
+    session[:space_id] = params[:id]
     @space = repo.find_by_id(params[:id])
+    @available_dates = repo.get_available_dates(params[:id])
     return erb(:spaces_id)
   end
+
+  post '/spaces/:id' do
+    booking_repo = BookingRepository.new
+    space_repo = SpaceRepository.new
+    user_repo = UserRepository.new
+
+    booking = Booking.new
+    booking.booking_date = params[:booking_date]
+    booking.status = params[:status]
+    booking.space_id = session[:space_id].to_i
+    booking.guest_id = session[:id].to_i
+    booking_repo.create(booking)
+    redirect '/index'
+  end
 end
+
+
+# Date picker form - specify which dates were available
