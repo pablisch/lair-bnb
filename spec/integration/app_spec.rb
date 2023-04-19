@@ -70,7 +70,7 @@ describe Application do
       password: 'Password' 
       )
       expect(response.status).to eq(200)
-      expect(response.body).to eq "Login Failed"
+      expect(response.body).to include "Error: Username or Password not recognised"
     end
   end
 
