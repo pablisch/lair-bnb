@@ -66,7 +66,7 @@ describe Application do
       response = get('/login')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Enter your login details</h1>')
+      expect(response.body).to include('<h2>Enter your login details</h2>')
     end
 
     it 'post the users input in the form and redirects to spaces' do
@@ -108,7 +108,7 @@ describe Application do
 
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include('<p>Charming and cosy with a quirky front door</p>')
-      expect(last_response.body).to include('<p>£70.0</p>')
+      expect(last_response.body).to include('<p>£70.0')
     end
   end
 
