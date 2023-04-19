@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    background-color: #f5f4f4;
+    color: #474646;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    background-color: #fff;
+    height: 70px;
+}
+
+.nav-height {
+    height: 100%;
+}
+
+nav h1 {
+    font-size: 2.2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo img {
+  max-height: 55px;
+  padding-right: 20px;
+}
+
+.links {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.links p {
+    font-size: 20px;
+}
+
+.login {
+  width: 80px;
+}
+
+.logout {
+  width: 80px;
+}
+
+.new_space {
+  width: 160px;
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.navlink:hover {
+  background: #f5f4f4;
+}
+
+.line {
+  background-color: #b1aeae;
+  min-height: 1px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #474646;
+    text-align: center;
+  }
+  
+  header a {
+  text-decoration: none;
+  color: #6f6c6c;
+}
+
+header h2 {
+  margin-bottom: 20px;
+}
+
+header p {
+  margin-bottom: 10px;
+}
+
+a:hover {
+  color: #000000;
+  font-weight: bold;
+}
+
+.centre {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.column {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+header {
+  padding-top: 30px;
+}
+
+header h1 {
+  margin-bottom: 20px;
+}
+
+.panels {
+  margin: 0 auto;
+}
+
+.space {
+  min-width: 750px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 20px 10px 0;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.6);
+  padding: 20px 30px;
+}
+
+input {
+  margin: 0 0 10px 15px;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.text {
+  font-family: 'Raleway', sans-serif;
+  width: 200px;
+  padding: 3px;
+  margin: 0 0 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  background-color: #fff;
+  color: #7c7c7c;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #b1aeae;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #6e6e6e;
+  color: #fff;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* h1 {
+  color: crimson;
+} */

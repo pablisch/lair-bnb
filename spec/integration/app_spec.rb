@@ -55,7 +55,7 @@ describe Application do
       response = get(
         '/')
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Spaces</h1>')
+      expect(response.body).to include('<title>MakersBnB</title>')
       expect(response.body).not_to include('Bag End')
       expect(response.body).not_to include('quirky front door')
     end
@@ -66,7 +66,7 @@ describe Application do
       response = get('/login')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Enter your login details</h1>')
+      expect(response.body).to include('<h2>Enter your login details</h2>')
     end
 
     it 'post the users input in the form and redirects to spaces' do
@@ -80,7 +80,7 @@ describe Application do
       response = get(
         '/')
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Spaces</h1>')
+      expect(response.body).to include('<title>MakersBnB</title>')
       expect(response.body).to include('Moria')
       expect(response.body).to include('Stunning white tower')
     end
@@ -108,7 +108,7 @@ describe Application do
 
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include('<p>Charming and cosy with a quirky front door</p>')
-      expect(last_response.body).to include('<p>£70.0</p>')
+      expect(last_response.body).to include('<p>£70.0')
     end
   end
 

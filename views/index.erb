@@ -2,22 +2,44 @@
 <html>
     <head>
         <title>MakersBnB</title>
-        <link rel="stylesheet" href="/style.css" >
+        <link rel="stylesheet" href="/styles.css" >
     </head>
         <p style="color: red;"><%= @msg %></p>
-        <a href="/login">login</a><br>
-        <a href="/logout">logout</a><br>
     <body>
-        <h1>Welcome to Flair BnB</h1>
-        <p><a href="/new_space">Create Space</a></p>
-        <h1>Spaces</h1>
-        <% @spaces.each do |space| %>
-          <div class="space">
-            <h2><a href = "/spaces/<%= space.id %>"><%= space.name %></a></h2>
-            <p><%= space.description %></p>
-            <p>£<%= space.price %></p>
-            <p>Available from <%= space.available_from %> to <%= space.available_to %></p>
+
+      <nav>
+      <div class="container centre nav-height">
+        <div class="logo">
+        <img src="bnb.png" alt="Flair BnB logo">
+          <h1>Welcome to Flair BnB</h1>
+        </div>
+        <div class="links">
+          <div class="login navlink"><p><a href="/login">login</a></p></div>
+          <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
+          <div class="new_space navlink"><p><a href="/new_space">Create Space</a></p></div>
+        </div>
+      </div>
+      </nav>
+      <div class="line"></div>
+      <div class="status">
+      </div>
+
+      <header>
+        <div class="centre">
+        <div class="container column">
+          <div class="panels">
+            <% @spaces.each do |space| %>
+            <div class="space">
+              <h2><a href = "/spaces/<%= space.id %>"><%= space.name %></a></h2>
+              <p><%= space.description %></p>
+              <p>£<%= space.price %> per night</p>
+              <p>Available from <%= space.available_from %> to <%= space.available_to %></p>
+            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+        </div>
+      </header>
+        
     </body>
 </html>
