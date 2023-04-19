@@ -55,7 +55,7 @@ describe Application do
       response = get(
         '/')
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Spaces</h1>')
+      expect(response.body).to include('<title>MakersBnB</title>')
       expect(response.body).not_to include('Bag End')
       expect(response.body).not_to include('quirky front door')
     end
@@ -80,7 +80,7 @@ describe Application do
       response = get(
         '/')
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Spaces</h1>')
+      expect(response.body).to include('<title>MakersBnB</title>')
       expect(response.body).to include('Moria')
       expect(response.body).to include('Stunning white tower')
     end

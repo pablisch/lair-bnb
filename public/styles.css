@@ -9,7 +9,7 @@
 body {
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
-    background-color: #eeeeee;
+    background-color: #eef1f1;
     color: #474646;
 }
 
@@ -20,7 +20,7 @@ body {
 }
 
 nav {
-    background-color: #d5d5d5;
+    /* background-color: #eeeeee; */
     height: 70px;
 }
 
@@ -32,6 +32,17 @@ nav h1 {
     font-size: 2.2rem;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo img {
+  max-height: 55px;
+  padding-right: 20px;
+}
+
 .links {
     display: flex;
 }
@@ -41,13 +52,35 @@ nav h1 {
     font-size: 20px;
 }
 
-.links p a {
+.line {
+  background-color: #b1aeae;
+  min-height: 1px;
+}
+
+a {
     text-decoration: none;
     color: #474646;
 }
 
+header a {
+  color: #6f6c6c;
+}
+
+header h2 {
+  margin-bottom: 20px;
+}
+
+header p {
+  margin-bottom: 10px;
+}
+
+a:hover {
+  color: #000000;
+  font-weight: bold;
+}
+
 .centre {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 30px;
 }
@@ -55,4 +88,25 @@ nav h1 {
 .column {
     flex-direction: column;
     align-items: flex-start;
+}
+
+header {
+  padding-top: 30px;
+}
+
+header h1 {
+  margin-bottom: 20px;
+}
+
+.panels {
+  margin: 0 auto;
+}
+
+.space {
+  min-width: 750px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 20px 10px 0;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.6);
+  padding: 20px 30px;
 }
