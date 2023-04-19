@@ -9,7 +9,7 @@ DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
 class Application < Sinatra::Base
   enable :sessions
-  
+
   configure :development do
     register Sinatra::Reloader
     register Sinatra::Flash
@@ -41,8 +41,12 @@ class Application < Sinatra::Base
     if user && email == user.email && password == user.password
       session[:email] = user.email
       session[:id] = user.id
+
+    else
+      @msg = "Error: Username or Password not recognised"
+      redirect('/login')
     end
-    
+
     return redirect('/')
   end
 
