@@ -10,3 +10,31 @@ RSpec.describe BookingRepository do
   before(:each) do
     reset_tables
   end
+
+  context "show all bookings" do
+    it "lists all bookings" do
+      repo = BookingRepository.new
+      result = repo.all
+      expect(result.length).to eq 8
+      expect(result.last.booking_date).to eq "2023-05-13"
+    end
+  end
+ 
+  context "creating a new booking" do
+    it "creates a booking based on user params" do
+      repo = BookingRepository.new
+      booking = Booking.new
+      booking.booking_date = "2023-05-01"
+      booking.status = false
+      booking.space_id = 1
+      booking.guest_id = 3
+    
+      new_booking = repo.create(booking)
+      all_bookings = repo.all
+
+      expect(all_bookings.length).to eq 9
+      expect(all_bookings.last.booking_date).to eq "2023-05-01"
+      expect(all_bookings.last.space_id).to eq 1
+    end
+  end
+end
