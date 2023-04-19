@@ -14,9 +14,12 @@
           <h1>Welcome to Flair BnB</h1>
         </div>
         <div class="links">
+          <% if session[:email].nil? %>
           <div class="login navlink"><p><a href="/login">login</a></p></div>
+          <% else %>
           <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
           <div class="new_space navlink"><p><a href="/new_space">Create Space</a></p></div>
+          <% end %>
         </div>
       </div>
       </nav>
