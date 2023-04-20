@@ -4,10 +4,12 @@ require_relative 'lib/space_repo'
 require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
 require 'sinatra/flash'
+require_relative 'lib/validation.rb'
 
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
 class Application < Sinatra::Base
+  include Validation
   enable :sessions
 
   configure :development do
@@ -32,6 +34,14 @@ class Application < Sinatra::Base
   end
 
   post '/login' do
+    if validation_nil_empty_input(params) || 
+        validation_no_asperand(params[:email]) || 
+          validation_length_of_sting(params[:password]) || 
+            validation_forbidden_char(params)
+      status 400
+      return ''
+    end
+
     email = params[:email]
     password = params[:password]
 
@@ -43,7 +53,7 @@ class Application < Sinatra::Base
       session[:id] = user.id
 
     else
-      @msg = "Error: Username or Password not recognised"
+      flash[:login_error] = "Error: Username or Password not recognised"
       redirect('/login')
     end
 
