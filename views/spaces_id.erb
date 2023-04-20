@@ -10,7 +10,7 @@
   <p> Available Dates:</p> 
   <form method="POST" action="/spaces/:id">
     <select>
-      <% @available_dates.each do |date| %>
+      <% @available_dates.each do |date| %> 
       <option><%= Date.parse(date).strftime("%d %b, %Y") %></option>
       <%  end %>
     </select>
