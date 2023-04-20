@@ -210,8 +210,8 @@ describe Application do
     end
   end
 
-  context 'Post filters params and returns spaces matching date range' do
-    it 'database post and redirect' do
+  context 'POST /' do
+    it 'filters wuth date params and returns spaces matching date range' do
       response = post(
         '/', 
         available_from: '2023-05-01',
