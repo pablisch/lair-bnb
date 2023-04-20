@@ -80,4 +80,11 @@ RSpec.describe SpaceRepository do
     end
   end
 
+  context "get available dates" do
+    it "returns available dates of a space" do
+      repo = SpaceRepository.new
+      result = repo.get_available_dates(1)
+      expect(result).to include('2023-05-10')
+    end
+  end
 end
