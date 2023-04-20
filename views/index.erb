@@ -15,7 +15,7 @@
         </div>
         <div class="links">
           <% if session[:email].nil? %>
-          <div class="login navlink"><p><a href="/login">login</a></p></div>
+          <div class="login navlink"><p><a href="/login">Login</a></p></div>
           <% else %>
           <div class="bookings_by navlink"><p><a href="/bookings_by_me">Bookings by me</a></p></div>
           <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
@@ -41,6 +41,13 @@
         <% end %>
         <div class="centre">
         <div class="container column">
+        <form method="POST" action="/">
+            <label>Available From </label><input type="date" name="available_from"/>
+            <label>Available To </label><input type="date" name="available_to"/>
+            <input type="submit" name="Filter">
+        </form>
+
+
           <div class="panels">
             <% @spaces.each do |space| %>
             <div class="space">
