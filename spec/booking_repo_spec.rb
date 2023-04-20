@@ -42,18 +42,24 @@ RSpec.describe BookingRepository do
   context "filter requests on owned spaces" do
     it "returns an array of spaces which have pending requests" do
       repo = BookingRepository.new
-      # space_repo = SpaceRepository.new
-      # owned_spaces = space_repo.all_owned_spaces(1)
-      # ids = space_repo.owned_space_ids(owned_spaces)
 
       result = repo.filter_owned('pending', 2)
 
       expect(result.length).to eq 3
-      # expect(result[0][0].booking_date).to eq '2023-05-10'
-      # expect(result[0][0].status).to eq 'pending'
-      # expect(result[0][0].space_id).to eq 1
-      # expect(result[0][0].guest_id).to eq 2
-      # expect(result[1]).to eq []
+      expect(result[0][0]).to eq 'Winterfell'
+      expect(result[0][1]).to eq '2023-05-11'
+      expect(result[0][2].username).to eq 'Amber'
+    end
+
+    it "returns an array of spaces which have confirmed requests" do
+      repo = BookingRepository.new
+
+      result = repo.filter_owned('confirmed', 1)
+
+      expect(result.length).to eq 3
+      expect(result[0][0]).to eq 'The Burrow'
+      expect(result[0][1]).to eq '2023-05-07'
+      expect(result[0][2].username).to eq 'Amber'
     end
   end
 end
