@@ -35,9 +35,16 @@ class BookingRepository
 
     bookings = []
     results.each do |record|
-      bookings << [record['space_id'], record['name'], record['booking_date'], user_repo.find_by_id(record['guest_id'])]
+      bookings << [record['space_id'], record['name'], record['booking_date'], user_repo.find_by_id(record['guest_id']), record['id']]
     end
 
     return bookings
+  end
+
+  def confirm_booking(id)
+    sql = 'UPDATE bookings SET status = $1 WHERE id = $2;'
+    params = ['confirmed', id]
+
+    DatabaseConnection.exec_params(sql, params)
   end
 end

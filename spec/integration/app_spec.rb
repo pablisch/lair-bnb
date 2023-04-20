@@ -70,11 +70,11 @@ describe Application do
       booking.status = "pending"
       booking.space_id = 1
       booking.guest_id = 2
-      
+
       booking_repo.create(booking)
       all_bookings = booking_repo.all
-      expect(all_bookings.last.booking_date).to eq('2023-05-03') 
-      expect(all_bookings.last.status).to eq('pending') 
+      expect(all_bookings.last.booking_date).to eq('2023-05-03')
+      expect(all_bookings.last.status).to eq('pending')
       expect(all_bookings.last.space_id).to eq(1)
       expect(response.status).to eq(302)
 
@@ -187,6 +187,23 @@ describe Application do
 
       expect(response.status).to eq(302)
       # expect(response.body).to include('New Space Listed')
+    end
+  end
+
+  context 'GET /bookings_for_me' do
+    it 'returns list of confirmed, pending and denied bookings for spaces owned by logged in user' do
+      response = post(
+          '/login',
+        email: 'amber@example.com',
+        password: 'Password1'
+        )
+
+      expect(response.status).to eq(302)
+
+      response = get('/bookings_for_me')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include 'Requested by: Billy'
     end
   end
 end

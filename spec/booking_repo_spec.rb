@@ -62,5 +62,19 @@ RSpec.describe BookingRepository do
       expect(result[0][3].username).to eq 'Amber'
     end
   end
+
+  context "#confirm_booking" do
+    it "updates the database to change a booking status from pending to confirmed" do
+      repo = BookingRepository.new
+      repo.confirm_booking(1)
+
+      bookings = repo.all
+
+      expect(bookings.last.status).to eq 'confirmed'
+      expect(bookings.last.booking_date).to eq '2023-05-10'
+      expect(bookings.last.space_id).to eq 1
+      expect(bookings.last.guest_id).to eq 2
+    end
+  end
 end
 
