@@ -16,7 +16,13 @@ RSpec.describe BookingRepository do
       repo = BookingRepository.new
       result = repo.all
       expect(result.length).to eq 8
-      expect(result.last.booking_date).to eq "2023-05-13"
+      expect(result.last).to (having_attributes(
+        booking_date: "2023-05-13",
+        status: "denied",
+        space_id: 5,
+        guest_id: 8
+        )
+      )
     end
   end
  
