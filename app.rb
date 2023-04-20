@@ -35,9 +35,9 @@ class Application < Sinatra::Base
   end
 
   post '/login' do
-    if validation_nil_empty_input(params) || 
-        validation_no_asperand(params[:email]) || 
-          validation_length_of_sting(params[:password]) || 
+    if validation_nil_empty_input(params) ||
+        validation_no_asperand(params[:email]) ||
+          validation_length_of_sting(params[:password]) ||
             validation_forbidden_char(params)
       status 400
       return ''
@@ -124,5 +124,14 @@ class Application < Sinatra::Base
       flash[:success] = "Your booking has been submitted!"
     end
     redirect "/spaces/#{session[:space_id]}"
+  end
+
+  get '/bookings_for_me' do
+    repo = BookingRepository.new
+    @confirmed_bookings = repo.filter_owned('confirmed', session[:id])
+    @pending_bookings = repo.filter_owned('pending', session[:id])
+    @denied_bookings = repo.filter_owned('denied', session[:id])
+
+    return erb(:bookings_for_me)
   end
 end

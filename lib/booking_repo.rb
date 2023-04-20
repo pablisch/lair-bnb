@@ -35,9 +35,9 @@ class BookingRepository
 
     bookings = []
     results.each do |record|
-      bookings << [record['name'], record['booking_date'], user_repo.find_by_id(record['guest_id'])]
+      bookings << [record['space_id'], record['name'], record['booking_date'], user_repo.find_by_id(record['guest_id'])]
     end
-   
+
     return bookings
   end
 end
