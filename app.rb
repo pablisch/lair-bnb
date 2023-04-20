@@ -5,6 +5,7 @@ require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
 require 'sinatra/flash'
 require_relative 'lib/validation.rb'
+require_relative 'lib/booking_repo.rb'
 
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
@@ -118,9 +119,10 @@ class Application < Sinatra::Base
     booking.space_id = session[:space_id].to_i
     booking.guest_id = session[:id].to_i
     booking_repo.create(booking)
-    redirect '/index'
+
+    if booking_repo.create(booking)
+      flash[:success] = "Your booking has been submitted!"
+    end
+    redirect "/spaces/#{session[:space_id]}"
   end
 end
-
-
-# Date picker form - specify which dates were available

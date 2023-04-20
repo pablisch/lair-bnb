@@ -56,7 +56,28 @@ describe Application do
 
   context 'POST /spaces/id' do
     it 'should return the form of a new booking' do
-      # test for the post spaces submission, should redirect back to index
+      response = post(
+        '/login',
+      email: 'amber@example.com',
+      password: 'Password1'
+      )
+      response = get('/')
+      response = get('/spaces/1')
+      response = post('/spaces/1', booking_date: '2023-05-03', status: 'pending')
+      booking_repo = BookingRepository.new
+      booking = Booking.new
+      booking.booking_date = '2023-05-03'
+      booking.status = "pending"
+      booking.space_id = 1
+      booking.guest_id = 2
+      
+      booking_repo.create(booking)
+      all_bookings = booking_repo.all
+      expect(all_bookings.last.booking_date).to eq('2023-05-03') 
+      expect(all_bookings.last.status).to eq('pending') 
+      expect(all_bookings.last.space_id).to eq(1) 
+
+      #expect(response.body).to include("Your booking has been submitted!")
     end
   end
 
