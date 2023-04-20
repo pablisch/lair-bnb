@@ -15,17 +15,17 @@ RSpec.describe BookingRepository do
     it "lists all bookings" do
       repo = BookingRepository.new
       result = repo.all
-      expect(result.length).to eq 8
+      expect(result.length).to eq 14
       expect(result.last).to (having_attributes(
-        booking_date: "2023-05-13",
+        booking_date: "2023-05-14",
         status: "denied",
         space_id: 5,
-        guest_id: 8
+        guest_id: 1
         )
       )
     end
   end
- 
+
   context "creating a new booking" do
     it "creates a booking based on user params" do
       repo = BookingRepository.new
@@ -61,7 +61,7 @@ RSpec.describe BookingRepository do
 
       all_bookings = repo.all
 
-      expect(all_bookings.length).to eq 10
+      expect(all_bookings.length).to eq 16
       expect(all_bookings.last.booking_date).to eq "2023-08-04"
       expect(all_bookings.last.space_id).to eq 1
       expect(all_bookings).to include(having_attributes(
