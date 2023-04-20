@@ -7,12 +7,22 @@
 <body>
   <h1>Space: <%= @space.name %></h1>
   <p> <%= @space.description %></p>
-  <form method="POST" action="/spaced_id">
-
-    <label>Enter your date </label><input type="text" name="available_from" required><br>
+  <p> Available Dates:</p> 
+  <form method="POST" action="/spaces/:id">
+    <select name="booking_date">
+      <% @available_dates.each do |date| %> 
+      <option><%= Date.parse(date).strftime("%d %b, %Y") %></option>
+      <%  end %>
+    </select>
     <input type="submit" value="Request to book">
-  </form>
-
+    <input type = "hidden" name = "status" value = "pending" />
+    <!-- NB Hard coded date, need to swap this out for the date functionality -->
+    <% flash.each do |type, message| %>
+    <div data-alert class="flash <%= type %> alert-box radius">
+        <%= message %>
+        <a href="" class="close">&times;</a>
+    </div>
+    <% end %>
   </form>
 </body>
 </html>

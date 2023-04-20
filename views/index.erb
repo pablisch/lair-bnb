@@ -28,6 +28,9 @@
       </div>
 
       <header>
+        <% unless session[:email].nil? %>
+          <h3>Explore homes for your next adventure, <%= session[:username] %>!</h3>
+        <% end %>
         <div class="centre">
         <div class="container column">
           <div class="panels">
@@ -36,7 +39,7 @@
               <h2><a href = "/spaces/<%= space.id %>"><%= space.name %></a></h2>
               <p><%= space.description %></p>
               <p>£<%= space.price %> per night</p>
-              <p>Available from <%= space.available_from %> to <%= space.available_to %></p>
+              <p>Available from <%= Date.parse(space.available_from).strftime("%d %b, %Y") %> to <%= Date.parse(space.available_to).strftime("%d %b, %Y") %></p>
             </div>
             <% end %>
           </div>
@@ -44,5 +47,6 @@
         </div>
       </header>
         
+      <script src="script.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>

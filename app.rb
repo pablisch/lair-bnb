@@ -5,7 +5,7 @@ require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
 require 'sinatra/flash'
 require_relative 'lib/validation.rb'
-require_relative 'lib/booking_repo'
+require_relative 'lib/booking_repo.rb'
 
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
@@ -35,13 +35,6 @@ class Application < Sinatra::Base
   end
 
   post '/login' do
-    if validation_nil_empty_input(params) || 
-        validation_no_asperand(params[:email]) || 
-          validation_length_of_sting(params[:password]) || 
-            validation_forbidden_char(params)
-      status 400
-      return ''
-    end
 
     email = params[:email]
     password = params[:password]
@@ -51,11 +44,18 @@ class Application < Sinatra::Base
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
+      session[:username] = user.username
       session[:id] = user.id
 
+    elsif validation_nil_empty_input(params) || 
+        validation_no_asperand(params[:email]) || 
+          validation_length_of_sting(params[:password]) || 
+            validation_forbidden_char(params)
+      status 400
+      return ''
     else
-      flash[:login_error] = "Error: Username or Password not recognised"
-      redirect('/login')
+      flash[:login_error] = "Username or Password not recognised"
+      return redirect('/login')
     end
 
     return redirect('/')
@@ -102,8 +102,28 @@ class Application < Sinatra::Base
 
   get '/spaces/:id' do
     repo = SpaceRepository.new
+    session[:space_id] = params[:id]
     @space = repo.find_by_id(params[:id])
+    @available_dates = repo.get_available_dates(params[:id])
     return erb(:spaces_id)
+  end
+
+  post '/spaces/:id' do
+    booking_repo = BookingRepository.new
+    space_repo = SpaceRepository.new
+    user_repo = UserRepository.new
+
+    booking = Booking.new
+    booking.booking_date = params[:booking_date]
+    booking.status = params[:status]
+    booking.space_id = session[:space_id].to_i
+    booking.guest_id = session[:id].to_i
+    booking_repo.create(booking)
+
+    if booking_repo.create(booking)
+      flash[:success] = "Your booking has been submitted!"
+    end
+    redirect "/spaces/#{session[:space_id]}"
   end
 
   get '/bookings_by_me' do

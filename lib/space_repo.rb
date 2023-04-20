@@ -1,4 +1,5 @@
 require_relative './space'
+require 'date'
 
 class SpaceRepository
   def all 
@@ -32,6 +33,38 @@ class SpaceRepository
     return spaces
   end
 
+  def get_booked_dates(space_id, status)
+    sql = 'SELECT booking_date FROM bookings WHERE space_id = $1 AND status = $2;'
+    params = [space_id, status]
+    result = DatabaseConnection.exec_params(sql, params)
+    dates = []
+    result.each do |record|
+      dates << Date.parse(record['booking_date']).strftime("%Y-%m-%d")
+    end
+    return dates
+  end
+
+  def get_available_dates(space_id)
+    sql = 'SELECT available_from, available_to FROM spaces WHERE id = $1;'
+    params = [space_id]
+    result = DatabaseConnection.exec_params(sql, params)
+
+    dates = []
+
+    result.each do |row|
+      dates << Date.parse(row['available_from'])
+      dates << Date.parse(row['available_to'])
+    end
+
+    dates_array = []
+
+    (dates[0]..dates[1]).step(1) do |date|
+      dates_array << date.strftime("%Y-%m-%d")# - "2005-01-01"
+    end
+
+    return dates_array - get_booked_dates(space_id, 'confirmed')
+  end
+
   private 
 
   def space_builder(record)
@@ -39,7 +72,7 @@ class SpaceRepository
     space.id = record['id'].to_i
     space.name = record['name']
     space.description = record['description']
-    space.price = record['price'].to_f
+    space.price = sprintf("%.2f", record['price'].to_f)
     space.available_from = record['available_from']
     space.available_to = record['available_to']
     space.user_id = record['user_id'].to_i
