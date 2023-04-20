@@ -211,4 +211,16 @@ describe Application do
       # expect(response.body).to include('New Space Listed')
     end
   end
+
+  context 'POST /' do
+    it 'filters wuth date params and returns spaces matching date range' do
+      response = post(
+        '/', 
+        available_from: '2023-05-01',
+        available_to: '2023-05-17'
+      )
+      
+      expect(response.status).to eq(200)
+    end
+  end
 end

@@ -5,8 +5,10 @@
 
 module Validation
     # validation_nil_empty_input used to verify fields contain input.
-    def validation_nil_empty_input(*input)
-        return true if input.nil? || input.empty?
+    def validation_nil_empty_input(*inputs)
+        inputs[0].each do |key, input|
+            return true if input.nil? || input.empty?
+        end
         false
     end
 

@@ -33,6 +33,13 @@
         <% end %>
         <div class="centre">
         <div class="container column">
+        <form method="POST" action="/">
+            <label>Available From </label><input type="date" name="available_from"/>
+            <label>Available To </label><input type="date" name="available_to"/>
+            <input type="submit" name="Filter">
+        </form>
+
+
           <div class="panels">
             <% @spaces.each do |space| %>
             <div class="space">
