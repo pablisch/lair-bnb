@@ -21,3 +21,7 @@ gem "rainbow", "~> 3.1"
 
 
 gem "sinatra-flash"
+
+group :development, :test do
+  gem 'rubocop', '1.20'
+end

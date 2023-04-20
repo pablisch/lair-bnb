@@ -4,8 +4,8 @@ require_relative 'lib/space_repo'
 require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
 require 'sinatra/flash'
-require_relative 'lib/validation.rb'
-require_relative 'lib/booking_repo.rb'
+require_relative 'lib/validation'
+require_relative 'lib/booking_repo'
 
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 

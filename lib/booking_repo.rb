@@ -17,6 +17,11 @@ class BookingRepository
   end
   
   def create(booking)
+    if booking.status.nil?
+      fail "Missing status"
+    elsif booking.space_id.nil?
+      fail "Missing space_id"
+    end
     sql = 'INSERT INTO bookings (booking_date, status, space_id, guest_id) VALUES ($1, $2, $3, $4);'
     params = [booking.booking_date, booking.status, booking.space_id, booking.guest_id]
     DatabaseConnection.exec_params(sql, params)
