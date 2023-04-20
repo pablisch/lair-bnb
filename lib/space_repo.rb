@@ -48,7 +48,9 @@ class SpaceRepository
     dates_array = []
 
     (dates[0]..dates[1]).step(1) do |date|
-      dates_array << date.strftime("%Y-%m-%d")
+      dates_array << date
+      #.strftime("%d %b, %Y") # - "1 Jan, 2005"
+      # ("%Y-%m-%d") - "2005-01-01"
     end
     return dates_array
   end

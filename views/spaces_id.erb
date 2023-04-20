@@ -11,7 +11,7 @@
   <form method="POST" action="/spaces/:id">
     <select>
       <% @available_dates.each do |date| %>
-      <option><%= date %></option>
+      <option><%= Date.parse(date).strftime("%d %b, %Y") %></option>
       <%  end %>
     </select>
     <input type="submit" value="Request to book">
