@@ -206,4 +206,25 @@ describe Application do
       expect(response.body).to include 'Requested by: Billy'
     end
   end
+
+  context 'POST /confirm_booking/:id' do
+    it "updates a booking's status from pending to confirmed" do
+      response = post(
+          '/login',
+        email: 'amber@example.com',
+        password: 'Password1'
+        )
+      expect(response.status).to eq(302)
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+
+      response = post('/confirm_booking/1')
+      expect(response.status).to eq 302
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+      expect(response.body).to include 'Booked by: Billy'
+    end
+  end
 end

@@ -66,7 +66,7 @@ class Application < Sinatra::Base
     redirect ('/')
   end
 
-  get '/spaces' do
+  get '/spaces' do # is this route defunct now?
     repo = SpaceRepository.new
     if session[:email].nil?
       @spaces = repo.all()
@@ -133,5 +133,13 @@ class Application < Sinatra::Base
     @denied_bookings = repo.filter_owned('denied', session[:id])
 
     return erb(:bookings_for_me)
+  end
+
+  post '/confirm_booking/:id' do
+    repo = BookingRepository.new
+    repo.confirm_booking(params[:id])
+
+    flash[:success] = "This booking has been confirmed"
+    redirect "/bookings_for_me"
   end
 end
