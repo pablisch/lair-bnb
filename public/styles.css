@@ -20,7 +20,7 @@ body {
 }
 
 nav {
-    background-color: #fff;
+    background-color: #d12929;
     height: 70px;
 }
 
@@ -106,14 +106,15 @@ a:hover {
 }
 
 .centre {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 30px;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 .column {
-    flex-direction: column;
-    align-items: flex-start;
+  flex-direction: column;
+  width: 100px;
+  /* align-items: flex-start; */
 }
 
 header {
@@ -129,7 +130,7 @@ header h1 {
 }
 
 .space {
-  min-width: 750px;
+  width: 300px;
   background-color: #fff;
   border-radius: 10px;
   margin: 20px 10px 0;

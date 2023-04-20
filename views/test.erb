@@ -1,0 +1,8 @@
+ <% @bookings.each do |booking| %>
+            <div class="space">
+              <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
+              <p><%= booking.description %></p>
+              <p>£<%= bookings_by_me.price %> per night</p>
+              <p>Confirmed booking for <%= booking.booking_date %></p>
+            </div>
+            <% end %>

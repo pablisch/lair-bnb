@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MakersBnB</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+  <nav>
+    <div class="container centre nav-height">
+      <div class="logo">
+        <img src="bnb.png" alt="Flair BnB logo">
+        <h1>Bookings - Made by me</h1>
+      </div>
+      <div class="links">
+      <div class="logout navlink"><p><a href="/">Home</a></p></div>
+          <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
+          <div class="new_space navlink"><p><a href="/new_space">Create Space</a></p></div>
+      
+      </div>
+    </div>
+  </nav>
+  <div class="line"></div>
+  <div class="container status">
+  </div>
+
+  <header>
+        <div class="centre container">
+
+          <div class="column">
+            <div class="panels">
+            <h2>Confirmed Bookings</h2>
+              <% @confirmed_bookings.each do |booking| %>
+              <div class="space">
+                <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
+                <h2>£<%= booking.price %></h2>
+                <h2>Confirmed for <%= booking.booking_date %></h2>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="panels">
+            <h2>Pending Bookings</h2>
+              <% @pending_bookings.each do |booking| %>
+              <div class="space">
+                <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
+                <h2>£<%= booking.price %></h2>
+                <h2>Pending booking for <%= booking.booking_date %></h2>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="panels">
+            <h2>Declined Bookings</h2>
+              <% @denied_bookings.each do |booking| %>
+              <div class="space">
+                <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
+                <h2>£<%= booking.price %></h2>
+                <h2>Booking for <%= booking.booking_date %> has beed declined</h2>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </header>
+</body>
+
+</html>

@@ -15,7 +15,7 @@ RSpec.describe BookingRepository do
     it "lists all bookings" do
       repo = BookingRepository.new
       result = repo.all
-      expect(result.length).to eq 8
+      expect(result.length).to eq 11
       expect(result.last.booking_date).to eq "2023-05-13"
     end
   end
@@ -32,9 +32,19 @@ RSpec.describe BookingRepository do
       new_booking = repo.create(booking)
       all_bookings = repo.all
 
-      expect(all_bookings.length).to eq 9
+      expect(all_bookings.length).to eq 12
       expect(all_bookings.last.booking_date).to eq "2023-05-01"
       expect(all_bookings.last.space_id).to eq 1
+    end
+  end
+
+  context "bookings_by_me" do
+    it "returns the bookings by me based on status" do
+      repo = BookingRepository.new
+      confirmed_bookings = repo.bookings_by_me("confirmed", 1)
+
+      expect(confirmed_bookings[1].booking_date).to include('2023-05-07')
+      expect(confirmed_bookings[0].name).to include('Moria')
     end
   end
 end

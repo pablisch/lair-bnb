@@ -159,4 +159,12 @@ describe Application do
       # expect(response.body).to include('New Space Listed')
     end
   end
+
+  context "/booking_by_me" do
+    it "returns a booking by me page" do
+      response = get('/bookings_by_me')
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h2>Confirmed Bookings</h2>')
+    end
+  end
 end

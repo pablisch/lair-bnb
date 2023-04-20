@@ -5,6 +5,7 @@ require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
 require 'sinatra/flash'
 require_relative 'lib/validation.rb'
+require_relative 'lib/booking_repo'
 
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
@@ -103,5 +104,17 @@ class Application < Sinatra::Base
     repo = SpaceRepository.new
     @space = repo.find_by_id(params[:id])
     return erb(:spaces_id)
+  end
+
+  get '/bookings_by_me' do
+    repo = BookingRepository.new
+    # spaces_repo = SpaceRepository.new
+    @confirmed_bookings = repo.bookings_by_me('confirmed', session[:id])
+    @pending_bookings = repo.bookings_by_me('pending', session[:id])
+    @denied_bookings = repo.bookings_by_me('denied', session[:id])
+
+  
+    
+    return erb(:bookings_by_me)
   end
 end

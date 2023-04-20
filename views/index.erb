@@ -4,7 +4,6 @@
         <title>MakersBnB</title>
         <link rel="stylesheet" href="/styles.css" >
     </head>
-        <p style="color: red;"><%= @msg %></p>
     <body>
 
       <nav>
@@ -17,6 +16,7 @@
           <% if session[:email].nil? %>
           <div class="login navlink"><p><a href="/login">login</a></p></div>
           <% else %>
+          <div class="logout navlink"><p><a href="/bookings_by_me">Bookings by me</a></p></div>
           <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
           <div class="new_space navlink"><p><a href="/new_space">Create Space</a></p></div>
           <% end %>
