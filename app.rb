@@ -5,6 +5,7 @@ require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
 require 'sinatra/flash'
 require_relative 'lib/validation.rb'
+require_relative 'lib/booking_repo.rb'
 
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
@@ -44,14 +45,6 @@ class Application < Sinatra::Base
   end
 
   post '/login' do
-    if validation_nil_empty_input(params) || 
-        validation_no_asperand(params[:email]) || 
-          validation_length_of_sting(params[:password]) || 
-            validation_forbidden_char(params)
-        status 400
-        return ''
-    end
-
     email = params[:email]
     password = params[:password]
 
@@ -60,11 +53,18 @@ class Application < Sinatra::Base
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
+      session[:username] = user.username
       session[:id] = user.id
 
+    elsif validation_nil_empty_input(params) || 
+        validation_no_asperand(params[:email]) || 
+          validation_length_of_sting(params[:password]) || 
+            validation_forbidden_char(params)
+      status 400
+      return ''
     else
-      flash[:login_error] = "Error: Username or Password not recognised"
-      redirect('/login')
+      flash[:login_error] = "Username or Password not recognised"
+      return redirect('/login')
     end
 
     return redirect('/')
@@ -128,9 +128,10 @@ class Application < Sinatra::Base
     booking.space_id = session[:space_id].to_i
     booking.guest_id = session[:id].to_i
     booking_repo.create(booking)
-    redirect '/index'
+
+    if booking_repo.create(booking)
+      flash[:success] = "Your booking has been submitted!"
+    end
+    redirect "/spaces/#{session[:space_id]}"
   end
 end
-
-
-# Date picker form - specify which dates were available

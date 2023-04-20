@@ -83,7 +83,7 @@ class SpaceRepository
     space.id = record['id'].to_i
     space.name = record['name']
     space.description = record['description']
-    space.price = record['price'].to_f
+    space.price = sprintf("%.2f", record['price'].to_f)
     space.available_from = record['available_from']
     space.available_to = record['available_to']
     space.user_id = record['user_id'].to_i
