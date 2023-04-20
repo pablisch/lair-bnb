@@ -34,7 +34,6 @@ class BookingRepository
     result = DatabaseConnection.exec_params(sql, params)
     bookings = []
     result.each{ |row| bookings << bookings_builder(row) }
-    # return bookings
     return bookings
   end
 
