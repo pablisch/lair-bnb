@@ -51,6 +51,7 @@ class Application < Sinatra::Base
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
+      session[:username] = user.username
       session[:id] = user.id
 
     else

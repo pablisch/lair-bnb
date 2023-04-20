@@ -38,11 +38,30 @@ describe Application do
       expect(response.body).to include('<a href="/logout">')
     end
 
+    it 'when user logged in should see personalised message' do
+      response = post(
+        '/login',
+      email: 'amber@example.com',
+      password: 'Password1'
+      )
+      expect(response.status).to eq 302
+      response = get('/')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Explore homes for your next adventure, Amber!')
+    end
+
     it 'when user not logged in should see correct links' do
       response = get('/')
       expect(response.status).to eq(200)
       expect(response.body).to include('<a href="/login">')
     end
+
+    it 'when user not logged in should not evaluate username' do
+      response = get('/')
+      expect(response.status).to eq(200)
+      expect(response.body).not_to include('session[:username]')
+    end
+
   end
 
   context 'GET /spaces/:id' do

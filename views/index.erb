@@ -28,6 +28,9 @@
       </div>
 
       <header>
+        <% unless session[:email].nil? %>
+          <h3>Explore homes for your next adventure, <%= session[:username] %>!</h3>
+        <% end %>
         <div class="centre">
         <div class="container column">
           <div class="panels">
