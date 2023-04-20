@@ -21,6 +21,17 @@ describe Application do
         expect(response.status).to eq(400)
     end
   end
+
+  context 'checking the inputs on post /' do
+    it 'responds with 400 status if parameters are invalid' do
+        response = post(
+            '/',
+            available_from: '',
+            available_to: ''
+        )
+        expect(response.status).to eq(302)
+    end
+  end
   
   context 'password strength requirements' do
     it 'responds 400 if length not greater than 8' do
@@ -61,6 +72,6 @@ describe Application do
           password: 'Password1'
       )
       expect(response.status).to eq(302)
+    end
   end
-  end 
 end

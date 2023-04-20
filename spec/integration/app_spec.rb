@@ -166,4 +166,16 @@ describe Application do
       # expect(response.body).to include('New Space Listed')
     end
   end
+
+  context 'Post filters params and returns spaces matching date range' do
+    it 'database post and redirect' do
+      response = post(
+        '/', 
+        available_from: '2023-05-01',
+        available_to: '2023-05-17'
+      )
+      
+      expect(response.status).to eq(200)
+    end
+  end
 end

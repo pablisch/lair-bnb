@@ -25,7 +25,17 @@ class Application < Sinatra::Base
     else
       @spaces = repo.all_except_owner(session[:id])
     end
+    return erb(:index)
+  end
 
+  post '/' do
+    return redirect('/') if validation_nil_empty_input(params) 
+
+    available_from = params[:available_from]
+    available_to = params[:available_to]
+    
+    repo = SpaceRepository.new
+    @spaces = repo.get_available_dates_filter(available_from, available_to)
     return erb(:index)
   end
 
@@ -38,8 +48,8 @@ class Application < Sinatra::Base
         validation_no_asperand(params[:email]) || 
           validation_length_of_sting(params[:password]) || 
             validation_forbidden_char(params)
-      status 400
-      return ''
+        status 400
+        return ''
     end
 
     email = params[:email]
