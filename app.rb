@@ -134,4 +134,16 @@ class Application < Sinatra::Base
     end
     redirect "/spaces/#{session[:space_id]}"
   end
+
+  get '/bookings_by_me' do
+    repo = BookingRepository.new
+    spaces_repo = SpaceRepository.new
+    @confirmed_bookings = repo.bookings_by_me('confirmed', session[:id])
+    @pending_bookings = repo.bookings_by_me('pending', session[:id])
+    @denied_bookings = repo.bookings_by_me('denied', session[:id])
+
+  
+    
+    return erb(:bookings_by_me)
+  end
 end

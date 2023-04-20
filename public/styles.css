@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
+:root {
+  --body: #f5f4f4;
+  --text: #474646;
+  --line: #b1aeae;
+  --hover_link: #6f6c6c;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,41 +16,8 @@
 body {
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
-    background-color: #f5f4f4;
-    color: #474646;
-}
-
-.info, .success, .warning, .error, .validation {
-  border: 1px solid;
-  margin: 10px 0px;
-  padding: 15px 10px 15px 50px;
-  background-repeat: no-repeat;
-  background-position: 10px center;
-}
-.info {
-  color: #00529B;
-  background-color: #BDE5F8;
-  background-image: url('https://i.imgur.com/ilgqWuX.png');
-}
-.success {
-  color: #4F8A10;
-  background-color: #DFF2BF;
-  background-image: url('https://i.imgur.com/Q9BGTuy.png');
-}
-.warning {
-  color: #9F6000;
-  background-color: #FEEFB3;
-  background-image: url('https://i.imgur.com/Z8q7ww7.png');
-}
-.error{
-  color: #D8000C;
-  background-color: #FFBABA;
-  background-image: url('https://i.imgur.com/GnyDvKN.png');
-}
-.validation{
-  color: #D63301;
-  background-color: #FFCCBA;
-  background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-color: var(--body);
+    color: var(--text);
 }
 
 .container {
@@ -51,6 +25,19 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+.centre {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+a:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+/* NAVBAR */
 
 nav {
     background-color: #fff;
@@ -86,13 +73,14 @@ nav h1 {
     font-size: 20px;
 }
 
-.login {
+.login, .logout {
   width: 80px;
 }
 
-
-.logout {
-  width: 80px;
+.bookings_by {
+  width: 120px;
+  padding: 10px;
+  text-align: center;
 }
 
 .new_space {
@@ -110,28 +98,26 @@ nav h1 {
   background: #f5f4f4;
 }
 
-.line {
-  background-color: #b1aeae;
-  min-height: 1px;
-}
 
 nav a {
     text-decoration: none;
-    color: #474646;
+    color: var(--text);
     text-align: center;
   }
-  
-  header a {
-  text-decoration: none;
-  color: #6f6c6c;
+
+.line {
+  background-color: var(--line);
+  min-height: 1px;
+  /* margin-bottom: 30px; */
 }
 
-header h2 {
+/* MAIN BODY / HEADER */
+
+header h1, h2, h3 {
   margin-bottom: 20px;
 }
 
 header h3 {
-  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -139,28 +125,24 @@ header p {
   margin-bottom: 10px;
 }
 
-a:hover {
-  color: #000000;
-  font-weight: bold;
+header a {
+  text-decoration: none;
+  color: var(--hover_link);
 }
 
-.centre {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 30px;
+.secret {
+  text-align: center;
+  margin: 10px auto;
+  color: var(--body);
+}
+
+.bookings {
+  align-items: flex-start;
 }
 
 .column {
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-header {
-  padding-top: 30px;
-}
-
-header h1 {
-  margin-bottom: 20px;
+  flex-direction: column;
+  flex: 1;
 }
 
 .panels {
@@ -168,13 +150,14 @@ header h1 {
 }
 
 .space {
-  min-width: 750px;
   background-color: #fff;
   border-radius: 10px;
   margin: 20px 10px 0;
   box-shadow: 0 3px 5px rgba(0,0,0,0.6);
   padding: 20px 30px;
 }
+
+/* FORMS */
 
 input {
   margin: 0 0 10px 15px;
@@ -210,6 +193,37 @@ input {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
-/* h1 {
-  color: crimson;
-} */
+/* WARNINGS AND VALIDATION */
+
+.info, .success, .warning, .error, .validation {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+.info {
+  color: #00529B;
+  background-color: #BDE5F8;
+  background-image: url('https://i.imgur.com/ilgqWuX.png');
+}
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image: url('https://i.imgur.com/Q9BGTuy.png');
+}
+.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url('https://i.imgur.com/Z8q7ww7.png');
+}
+.error{
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
+.validation{
+  color: #D63301;
+  background-color: #FFCCBA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+}

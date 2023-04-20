@@ -212,6 +212,14 @@ describe Application do
     end
   end
 
+  context "/booking_by_me" do
+    it "returns a booking by me page" do
+      response = get('/bookings_by_me')
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h3>Confirmed Bookings</h3>')
+    end
+  end
+
   context 'POST /' do
     it 'filters wuth date params and returns spaces matching date range' do
       response = post(

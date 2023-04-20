@@ -96,7 +96,7 @@ RSpec.describe SpaceRepository do
       expect(result[0].id).to eq 1
       expect(result[0].name).to eq "Bag End"
       expect(result[0].description).to include "Charming and cosy"
-      expect(result[0].price).to eq 70.0
+      expect(result[0].price).to eq "70.00"
       expect(result[0].available_from).to eq "2023-05-01"
       expect(result[0].available_to).to eq "2023-05-15"
       expect(result[0].user_id).to eq 1
