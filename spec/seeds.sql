@@ -1,6 +1,6 @@
-TRUNCATE TABLE users, spaces, bookings RESTART IDENTITY; 
+TRUNCATE TABLE users, spaces, bookings RESTART IDENTITY;
 
-INSERT INTO users (username, email, password) VALUES 
+INSERT INTO users (username, email, password) VALUES
 ('Amber', 'amber@example.com', 'Password1'),
 ('Billy', 'billy@example.com', 'Password2'),
 ('Caleb', 'caleb@example.com', 'Password3'),
@@ -11,7 +11,7 @@ INSERT INTO users (username, email, password) VALUES
 ('Hande', 'hande@example.com', 'Password8')
 ;
 
-INSERT INTO spaces (name, description, price, available_from, available_to, user_id) VALUES 
+INSERT INTO spaces (name, description, price, available_from, available_to, user_id) VALUES
 ('Bag End', 'Charming and cosy with a quirky front door', 70, '2023-05-01', '2023-05-15', 1),
 ('Winterfell', 'Plenty of rustic charm, open countryside and extra firewood available.', 120, '2023-05-03', '2023-05-17', 2),
 ('Moria', 'Cavernous dwelling with plenty to explore and a huge open fire.', 180, '2023-05-06', '2023-05-20', 3),
@@ -19,13 +19,16 @@ INSERT INTO spaces (name, description, price, available_from, available_to, user
 ('Orthanc', 'Stunning white tower among a lively woodland setting.', 200, '2023-05-02', '2023-05-16', 5)
 ;
 
-INSERT INTO bookings (booking_date, status, space_id, guest_id) VALUES 
-('2023-05-10', 'available', 1, 2),
-('2023-05-11', 'available', 2, 7),
+INSERT INTO bookings (booking_date, status, space_id, guest_id) VALUES
+('2023-05-10', 'pending', 1, 2), 
+('2023-05-11', 'pending', 2, 1),
 ('2023-05-07', 'confirmed', 3, 1),
-('2023-05-09', 'confirmed', 4, 6),
-('2023-05-10', 'available', 2, 7),
+('2023-05-07', 'confirmed', 4, 1),
+('2023-05-07', 'pending', 2, 1),
+('2023-05-09', 'confirmed', 4, 1),
+('2023-05-10', 'pending', 2, 1),
 ('2023-05-11', 'confirmed', 1, 3),
 ('2023-05-13', 'denied', 5, 1),
-('2023-05-13', 'denied', 5, 8)
+('2023-05-13', 'denied', 4, 1),
+('2023-05-13', 'denied', 5, 1)
 ;
