@@ -214,7 +214,7 @@ describe Application do
     it "returns a booking by me page" do
       response = get('/bookings_by_me')
       expect(response.status).to eq 200
-      expect(response.body).to include('<h2>Confirmed Bookings</h2>')
+      expect(response.body).to include('<h3>Confirmed Bookings</h3>')
     end
   end
 end

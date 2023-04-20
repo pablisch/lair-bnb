@@ -31,12 +31,12 @@
 
           <div class="column">
             <div class="panels">
-            <h2>Confirmed Bookings</h2>
+            <h3>Confirmed Bookings</h3>
               <% @confirmed_bookings.each do |booking| %>
               <div class="space">
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
-                <h2>£<%= booking.price %></h2>
-                <h2>Confirmed for <%= booking.booking_date %></h2>
+                <p>£<%= booking.price %></p>
+                <p>Booking confirmed for <%= booking.booking_date %></p>
               </div>
               <% end %>
             </div>
@@ -44,12 +44,12 @@
 
           <div class="column">
             <div class="panels">
-            <h2>Pending Bookings</h2>
+            <h3>Pending Bookings</h3>
               <% @pending_bookings.each do |booking| %>
               <div class="space">
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
-                <h2>£<%= booking.price %></h2>
-                <h2>Pending booking for <%= booking.booking_date %></h2>
+                <p>£<%= booking.price %></p>
+                <p>Booking pending for <%= booking.booking_date %></p>
               </div>
               <% end %>
             </div>
@@ -57,12 +57,12 @@
 
           <div class="column">
             <div class="panels">
-            <h2>Declined Bookings</h2>
+            <h3>Declined Bookings</h3>
               <% @denied_bookings.each do |booking| %>
               <div class="space">
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
-                <h2>£<%= booking.price %></h2>
-                <h2>Booking for <%= booking.booking_date %> has beed declined</h2>
+                <p>£<%= booking.price %></p>
+                <p>Booking declined for <%= booking.booking_date %></p>
               </div>
               <% end %>
             </div>

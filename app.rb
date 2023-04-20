@@ -128,7 +128,7 @@ class Application < Sinatra::Base
 
   get '/bookings_by_me' do
     repo = BookingRepository.new
-    # spaces_repo = SpaceRepository.new
+    spaces_repo = SpaceRepository.new
     @confirmed_bookings = repo.bookings_by_me('confirmed', session[:id])
     @pending_bookings = repo.bookings_by_me('pending', session[:id])
     @denied_bookings = repo.bookings_by_me('denied', session[:id])

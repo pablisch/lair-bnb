@@ -22,13 +22,16 @@ INSERT INTO spaces (name, description, price, available_from, available_to, user
 INSERT INTO bookings (booking_date, status, space_id, guest_id) VALUES 
 ('2023-05-10', 'pending', 1, 2),
 ('2023-05-11', 'pending', 2, 1),
+('2023-05-21', 'confirmed', 2, 1),
 ('2023-05-07', 'confirmed', 3, 1),
+('2023-05-22', 'confirmed', 3, 1),
 ('2023-05-07', 'confirmed', 4, 1),
 ('2023-05-07', 'pending', 2, 1),
 ('2023-05-09', 'confirmed', 4, 1),
 ('2023-05-10', 'pending', 2, 1),
 ('2023-05-11', 'confirmed', 1, 3),
 ('2023-05-13', 'denied', 5, 1),
+('2023-05-15', 'denied', 5, 1),
 ('2023-05-13', 'denied', 4, 1),
-('2023-05-13', 'denied', 5, 1)
+('2023-05-14', 'denied', 5, 1)
 ;
