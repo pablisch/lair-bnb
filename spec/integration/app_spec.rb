@@ -75,9 +75,11 @@ describe Application do
       all_bookings = booking_repo.all
       expect(all_bookings.last.booking_date).to eq('2023-05-03') 
       expect(all_bookings.last.status).to eq('pending') 
-      expect(all_bookings.last.space_id).to eq(1) 
+      expect(all_bookings.last.space_id).to eq(1)
+      expect(response.status).to eq(302)
 
-      #expect(response.body).to include("Your booking has been submitted!")
+      response = get('/spaces/1')
+      expect(response.body).to include("Your booking has been submitted!")
     end
   end
 
