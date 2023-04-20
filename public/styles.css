@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
+:root {
+  --body: #f5f4f4;
+  --text: #474646;
+  --line: #b1aeae;
+  --hover_link: #6f6c6c;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,8 +16,8 @@
 body {
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
-    background-color: #f5f4f4;
-    color: #474646;
+    background-color: var(--body);
+    color: var(--text);
 }
 
 .container {
@@ -26,7 +33,7 @@ body {
 }
 
 a:hover {
-  color: #000000;
+  color: #000;
   font-weight: bold;
 }
 
@@ -66,12 +73,14 @@ nav h1 {
     font-size: 20px;
 }
 
-.login {
+.login, .logout {
   width: 80px;
 }
 
-.logout {
-  width: 80px;
+.bookings_by {
+  width: 120px;
+  padding: 10px;
+  text-align: center;
 }
 
 .new_space {
@@ -92,20 +101,17 @@ nav h1 {
 
 nav a {
     text-decoration: none;
-    color: #474646;
+    color: var(--text);
     text-align: center;
   }
 
 .line {
-  background-color: #b1aeae;
+  background-color: var(--line);
   min-height: 1px;
+  /* margin-bottom: 30px; */
 }
 
 /* MAIN BODY / HEADER */
-
-header {
-  padding-top: 30px;
-}
 
 header h1, h2, h3 {
   margin-bottom: 20px;
@@ -121,11 +127,22 @@ header p {
 
 header a {
   text-decoration: none;
-  color: #6f6c6c;
+  color: var(--hover_link);
+}
+
+.secret {
+  text-align: center;
+  margin: 10px auto;
+  color: var(--body);
+}
+
+.bookings {
+  align-items: flex-start;
 }
 
 .column {
   flex-direction: column;
+  flex: 1;
 }
 
 .panels {

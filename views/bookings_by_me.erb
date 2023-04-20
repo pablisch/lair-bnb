@@ -4,6 +4,7 @@
 <head>
   <title>MakersBnB</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/x-icon" href="bnb.png" />
 </head>
 
 <body>
@@ -11,7 +12,7 @@
   <nav>
     <div class="container centre nav-height">
       <div class="logo">
-        <img src="bnb.png" alt="Flair BnB logo">
+        <img class="flair" src="bnb.png" alt="Flair BnB logo">
         <h1>Bookings - Made by me</h1>
       </div>
       <div class="links">
@@ -27,7 +28,11 @@
   </div>
 
   <header>
-        <div class="centre container">
+    <div>
+        <p class="secret">Pablo has an unhealthy addiction to cabecou, but don't tell anyone... it's a secret</p>
+      </div>
+
+        <div class="centre container bookings">
 
           <div class="column">
             <div class="panels">
@@ -36,7 +41,8 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
                 <p>£<%= booking.price %></p>
-                <p>Booking confirmed for <%= booking.booking_date %></p>
+                <p>Booking confirmed for</p>
+                <p><%= booking.booking_date %></p>
               </div>
               <% end %>
             </div>
@@ -49,7 +55,8 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
                 <p>£<%= booking.price %></p>
-                <p>Booking pending for <%= booking.booking_date %></p>
+                <p>Booking pending for </p>
+                <p><%= booking.booking_date %></p>
               </div>
               <% end %>
             </div>
@@ -62,13 +69,15 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
                 <p>£<%= booking.price %></p>
-                <p>Booking declined for <%= booking.booking_date %></p>
+                <p>Booking declined for </p>
+                <p><%= booking.booking_date %></p>
               </div>
               <% end %>
             </div>
           </div>
         </div>
       </header>
+  <script src="script.js" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>

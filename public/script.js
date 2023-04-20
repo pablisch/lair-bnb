@@ -1,4 +1,6 @@
-const logo = document.querySelector(".logo");
+const logo = document.querySelector(".flair");
+const title = document.querySelector(".logo");
+const secret = document.querySelector(".secret");
 
 // Listen for logo mouseover - set opacity low
 logo.addEventListener('mouseover', logoHoverOn => {
@@ -12,12 +14,16 @@ logo.addEventListener('mouseout', logoHoverOFF => {
 
 // APPLY low opacity
 function fade() {
-  logo.style.opacity = '0.2';
-  logo.style.transition = 'opacity 3s ease';
+  title.style.opacity = '0.1';
+  title.style.transition = 'opacity 3s ease';
+  secret.style.color = '#58be36';
+  secret.style.transition = 'color 10s ease';
 }
 
 // APPLY full opacity
 function opaque() {
-  logo.style.opacity = '1';
-  logo.style.transition = 'opacity 2s ease';
+  title.style.opacity = '1';
+  title.style.transition = 'opacity 2s ease';
+  secret.style.color = '#f5f4f4';
+  secret.style.transition = 'color 1s ease';
 }

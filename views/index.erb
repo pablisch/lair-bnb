@@ -3,31 +3,39 @@
     <head>
         <title>MakersBnB</title>
         <link rel="stylesheet" href="/styles.css" >
+        <link rel="icon" type="image/x-icon" href="bnb.png" />
     </head>
     <body>
 
       <nav>
       <div class="container centre nav-height">
         <div class="logo">
-        <img src="bnb.png" alt="Flair BnB logo">
+        <img class="flair" src="bnb.png" alt="Flair BnB logo">
           <h1>Welcome to Flair BnB</h1>
         </div>
         <div class="links">
           <% if session[:email].nil? %>
           <div class="login navlink"><p><a href="/login">login</a></p></div>
           <% else %>
-          <div class="logout navlink"><p><a href="/bookings_by_me">Bookings by me</a></p></div>
+          <div class="bookings_by navlink"><p><a href="/bookings_by_me">Bookings by me</a></p></div>
           <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
           <div class="new_space navlink"><p><a href="/new_space">Create Space</a></p></div>
           <% end %>
         </div>
       </div>
       </nav>
+
       <div class="line"></div>
+
+      <header>
+
       <div class="status">
       </div>
 
-      <header>
+      <div>
+        <p class="secret">Flair BnB was built with love, joy and mutual respect by Sidra, Matt, Natasha, Chris, Sunny and Pablo</p>
+      </div>
+      
         <% unless session[:email].nil? %>
           <h3>Explore homes for your next adventure, <%= session[:username] %>!</h3>
         <% end %>
