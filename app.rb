@@ -17,6 +17,7 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
     register Sinatra::Flash
     enable :sessions
+    also_reload 'lib/validations'
   end
 
   get '/' do
@@ -58,7 +59,7 @@ class Application < Sinatra::Base
     elsif validation_no_asperand(params[:email])
       flash[:alert] = "Please enter a valid email address."
       return redirect('/login')
-    elsif validation_length_of_sting(params[:password])
+    elsif validation_length_of_string(params[:password])
       flash[:alert] = "Contact support to strengthen your password."
       return redirect('/login')
     elsif validation_forbidden_char(params[:email])
