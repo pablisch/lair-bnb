@@ -50,6 +50,12 @@
           <div class="column">
             <div class="panels">
             <h3>Pending Bookings</h3>
+            <% flash.each do |type, message| %>
+              <div data-alert class="flash <%= type %> alert-box radius">
+                  <%= message %>
+                  <a href="" class="close">&times;</a>
+              </div>
+              <% end %>
               <% @pending_bookings.each do |booking| %>
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
@@ -58,22 +64,10 @@
 
                 <form method="POST" action="/confirm_booking/<%= booking[4] %>">
                     <button type="submit">Confirm</button>
-                    <% flash.each do |type, message| %>
-                        <div data-alert class="flash <%= type %> alert-box radius">
-                            <%= message %>
-                            <a href="" class="close">&times;</a>
-                        </div>
-                        <% end %>
                 </form>
 
                 <form method="POST" action="/decline_booking/<%= booking[4] %>">
                     <button type="submit">Decline</button>
-                    <% flash.each do |type, message| %>
-                        <div data-alert class="flash <%= type %> alert-box radius">
-                            <%= message %>
-                            <a href="" class="close">&times;</a>
-                        </div>
-                        <% end %>
                 </form>
               </div>
               <% end %>
