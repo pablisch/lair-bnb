@@ -10,7 +10,7 @@
       <div class="container centre nav-height">
       <div class="logo">
         <img class="flair" src="bnb.png" alt="Flair BnB logo">
-        <h1>Bookings - Made by me</h1>
+        <h1><%= @space.name %></h1>
       </div>
         <div class="links">
           <% if session[:email].nil? %>
@@ -29,7 +29,6 @@
       </div>
   <div class="container column">
   <img src="<%="/images/"+@space.id.to_s+".png" %>" class="space-image" style = "width:25%; height:25%;border-radius: 20%;"><br>
-  <h1>Space: <%= @space.name %></h1>
   <p> <%= @space.description %></p>
   <p> Available Dates:</p> 
   <form method="POST" action="/spaces/:id">
