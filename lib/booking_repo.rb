@@ -41,9 +41,9 @@ class BookingRepository
     return bookings
   end
 
-  def confirm_booking(id)
+  def update_booking(id, status)
     sql = 'UPDATE bookings SET status = $1 WHERE id = $2;'
-    params = ['confirmed', id]
+    params = [status, id]
 
     DatabaseConnection.exec_params(sql, params)
   end

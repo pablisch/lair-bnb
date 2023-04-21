@@ -63,14 +63,26 @@ RSpec.describe BookingRepository do
     end
   end
 
-  context "#confirm_booking" do
-    it "updates the database to change a booking status from pending to confirmed" do
+  context "#update_booking" do
+    it "changes a booking status from pending to confirmed" do
       repo = BookingRepository.new
-      repo.confirm_booking(1)
+      repo.update_booking(1, 'confirmed')
 
       bookings = repo.all
 
       expect(bookings.last.status).to eq 'confirmed'
+      expect(bookings.last.booking_date).to eq '2023-05-10'
+      expect(bookings.last.space_id).to eq 1
+      expect(bookings.last.guest_id).to eq 2
+    end
+
+    it "changes a booking status from pending to denied" do
+      repo = BookingRepository.new
+      repo.update_booking(1, 'denied')
+
+      bookings = repo.all
+
+      expect(bookings.last.status).to eq 'denied'
       expect(bookings.last.booking_date).to eq '2023-05-10'
       expect(bookings.last.space_id).to eq 1
       expect(bookings.last.guest_id).to eq 2

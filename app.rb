@@ -137,7 +137,7 @@ class Application < Sinatra::Base
 
   post '/confirm_booking/:id' do
     repo = BookingRepository.new
-    repo.confirm_booking(params[:id])
+    repo.update_booking(params[:id], 'confirmed')
 
     flash[:success] = "This booking has been confirmed"
     redirect "/bookings_for_me"
