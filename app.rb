@@ -120,6 +120,9 @@ class Application < Sinatra::Base
   end
 
   post '/spaces/:id' do
+
+    redirect '/login' if session[:id] == nil
+
     booking_repo = BookingRepository.new
     space_repo = SpaceRepository.new
     user_repo = UserRepository.new
