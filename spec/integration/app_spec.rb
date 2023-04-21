@@ -176,7 +176,7 @@ describe Application do
       response = get('/new_space')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Create a new space</h1>')
+      expect(response.body).to include('<h1>Create a new Space</h1>')
     end
   end
 
