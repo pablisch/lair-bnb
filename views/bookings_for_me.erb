@@ -84,7 +84,7 @@
                 <p>Requested by: <%= booking[3].username %></p>
 
                 <p>Booking declined for</p>
-                <p><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
+                <p class="declined"><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
               </div>
               <% end %>
             </div>

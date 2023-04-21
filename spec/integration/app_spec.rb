@@ -27,7 +27,7 @@ describe Application do
     end
 
     it 'should get the homepage without owner spaces listed as logged in' do
-      
+
       response = post(
         '/login',
       email: 'amber@example.com',
@@ -35,7 +35,7 @@ describe Application do
       )
 
       expect(response.status).to eq 302
-      
+
       response = get('/')
       expect(response.status).to eq(200)
       expect(response.body).to include('Welcome to Flair BnB')
@@ -276,7 +276,7 @@ describe Application do
 
       response = get('/bookings_for_me')
       expect(response.status).to eq 200
-      expect(response.body).to include('<p class="declined">2023-05-10</p>')
+      expect(response.body).to include('<p class="declined">10 May, 2023</p>')
     end
   end
 end
