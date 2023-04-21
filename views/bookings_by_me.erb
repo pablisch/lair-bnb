@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MakersBnB</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/x-icon" href="bnb.png" />
+</head>
+
+<body>
+
+  <nav>
+    <div class="container centre nav-height">
+      <div class="logo">
+        <img class="flair" src="bnb.png" alt="Flair BnB logo">
+        <h1>Bookings - Made by me</h1>
+      </div>
+      <div class="links">
+      <div class="logout navlink"><p><a href="/">Home</a></p></div>
+          <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
+          <div class="new_space navlink"><p><a href="/new_space">Create Space</a></p></div>
+      
+      </div>
+    </div>
+  </nav>
+  <div class="line"></div>
+  <div class="container status">
+  </div>
+
+  <header>
+    <div>
+        <p class="secret">Pablo has an unhealthy addiction to cabecou, but don't tell anyone... it's a secret</p>
+      </div>
+
+        <div class="centre container bookings">
+
+          <div class="column">
+            <div class="panels">
+            <h3>Confirmed Bookings</h3>
+              <% @confirmed_bookings.each do |booking| %>
+              <div class="space">
+                <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
+                <p>£<%= booking.price %></p>
+                <p>Booking confirmed for</p>
+                <p><%= booking.booking_date %></p>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="panels">
+            <h3>Pending Bookings</h3>
+              <% @pending_bookings.each do |booking| %>
+              <div class="space">
+                <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
+                <p>£<%= booking.price %></p>
+                <p>Booking pending for </p>
+                <p><%= booking.booking_date %></p>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="panels">
+            <h3>Declined Bookings</h3>
+              <% @denied_bookings.each do |booking| %>
+              <div class="space">
+                <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
+                <p>£<%= booking.price %></p>
+                <p>Booking declined for </p>
+                <p><%= booking.booking_date %></p>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </header>
+  <script src="script.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

@@ -3,19 +3,24 @@
     <head>
         <title>MakersBnB - New Space</title>
 
-        <!--
-            Head to https://github.com/makersacademy/web-applications/blob/main/pills/loading_css_or_static_files.md
-            If you're wondering how the CSS file below is being loaded.
-        -->
         <link rel="stylesheet" href="/styles.css" >
+        <link rel="icon" type="image/x-icon" href="bnb.png" />
     </head>
     <body>
-         <% flash.each do |type, message| %>
+
+    <header>
+      <div>
+        <p class="secret">Flair BnB was built with love, joy and mutual respect by Sidra, Matt, Natasha, Chris, Sunny and Pablo</p>
+      </div>
+
+    <!--
+        <% flash.each do |type, message| %>
         <div data-alert class="flash <%= type %> alert-box radius">
             <%= message %>
             <a href="" class="close">&times;</a>
         </div>
         <% end %>
+    -->
         <h1>Create a new space</h1>
         <form method="POST" action="/new_space">
             <label>Name </label><input type="text" name="name"/><br>
@@ -25,5 +30,7 @@
             <label>Available To </label><input type="text" name="available_to"><br>
             <input type="submit" name="Create Space">
         </form>
+
+    </header>
     </body>
 </html>

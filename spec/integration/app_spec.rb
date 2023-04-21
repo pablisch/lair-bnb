@@ -38,11 +38,30 @@ describe Application do
       expect(response.body).to include('<a href="/logout">')
     end
 
+    it 'when user logged in should see personalised message' do
+      response = post(
+        '/login',
+      email: 'amber@example.com',
+      password: 'Password1'
+      )
+      expect(response.status).to eq 302
+      response = get('/')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Explore homes for your next adventure, Amber!')
+    end
+
     it 'when user not logged in should see correct links' do
       response = get('/')
       expect(response.status).to eq(200)
       expect(response.body).to include('<a href="/login">')
     end
+
+    it 'when user not logged in should not evaluate username' do
+      response = get('/')
+      expect(response.status).to eq(200)
+      expect(response.body).not_to include('session[:username]')
+    end
+
   end
 
   context 'GET /spaces/:id' do
@@ -109,14 +128,16 @@ describe Application do
     end
   end
 
-  context 'GET-POST /login' do
+  context 'GET /login' do
     it 'displays login page' do
       response = get('/login')
 
       expect(response.status).to eq(200)
       expect(response.body).to include('<h2>Enter your login details</h2>')
     end
+  end
 
+  context 'POST /login' do
     it 'post the users input in the form and redirects to spaces' do
       response = post(
         '/login',
@@ -133,14 +154,15 @@ describe Application do
       expect(response.body).to include('Stunning white tower')
     end
 
-    xit 'user enters wrong email address or password, redirects to fail' do
+    it 'user enters wrong email address or password, redirects to fail' do
       response = post(
         '/login',
       email: 'amber@example.com',
       password: 'Password'
       )
       expect(response.status).to eq(302)
-      expect(response.body).to include "Error: Username or Password not recognised" # change this when flash is enabled
+      response = get('/login')
+      expect(response.body).to include "Username or Password not recognised"
     end
   end
 
@@ -156,7 +178,7 @@ describe Application do
 
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include('<p>Charming and cosy with a quirky front door</p>')
-      expect(last_response.body).to include('<p>£70.0')
+      expect(last_response.body).to include('<p>£70.00')
     end
   end
 
@@ -187,6 +209,26 @@ describe Application do
 
       expect(response.status).to eq(302)
       # expect(response.body).to include('New Space Listed')
+    end
+  end
+
+  context "/booking_by_me" do
+    it "returns a booking by me page" do
+      response = get('/bookings_by_me')
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h3>Confirmed Bookings</h3>')
+    end
+  end
+
+  context 'POST /' do
+    it 'filters wuth date params and returns spaces matching date range' do
+      response = post(
+        '/',
+        available_from: '2023-05-01',
+        available_to: '2023-05-17'
+      )
+
+      expect(response.status).to eq(200)
     end
   end
 

@@ -4,8 +4,8 @@ require_relative 'lib/space_repo'
 require_relative 'lib/user_repo'
 require_relative 'lib/database_connection'
 require 'sinatra/flash'
-require_relative 'lib/validation.rb'
-require_relative 'lib/booking_repo.rb'
+require_relative 'lib/validation'
+require_relative 'lib/booking_repo'
 
 DatabaseConnection.connect('makersbnb') unless ENV['ENV'] == 'test'
 
@@ -26,7 +26,17 @@ class Application < Sinatra::Base
     else
       @spaces = repo.all_except_owner(session[:id])
     end
+    return erb(:index)
+  end
 
+  post '/' do
+    return redirect('/') if validation_nil_empty_input(params)
+
+    available_from = params[:available_from]
+    available_to = params[:available_to]
+
+    repo = SpaceRepository.new
+    @spaces = repo.get_available_dates_filter(available_from, available_to)
     return erb(:index)
   end
 
@@ -51,11 +61,18 @@ class Application < Sinatra::Base
 
     if user && email == user.email && password == user.password
       session[:email] = user.email
+      session[:username] = user.username
       session[:id] = user.id
 
+    elsif validation_nil_empty_input(params) ||
+        validation_no_asperand(params[:email]) ||
+          validation_length_of_sting(params[:password]) ||
+            validation_forbidden_char(params)
+      status 400
+      return ''
     else
-      flash[:login_error] = "Error: Username or Password not recognised"
-      redirect('/login')
+      flash[:login_error] = "Username or Password not recognised"
+      return redirect('/login')
     end
 
     return redirect('/')
@@ -124,6 +141,18 @@ class Application < Sinatra::Base
       flash[:success] = "Your booking has been submitted!"
     end
     redirect "/spaces/#{session[:space_id]}"
+  end
+
+  get '/bookings_by_me' do
+    repo = BookingRepository.new
+    spaces_repo = SpaceRepository.new
+    @confirmed_bookings = repo.bookings_by_me('confirmed', session[:id])
+    @pending_bookings = repo.bookings_by_me('pending', session[:id])
+    @denied_bookings = repo.bookings_by_me('denied', session[:id])
+
+
+
+    return erb(:bookings_by_me)
   end
 
   get '/bookings_for_me' do

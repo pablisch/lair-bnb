@@ -65,6 +65,17 @@ class SpaceRepository
     return dates_array - get_booked_dates(space_id, 'confirmed')
   end
 
+  def get_available_dates_filter(available_from, available_to)
+    sql = "SELECT * FROM spaces WHERE available_from <= $1 AND available_to >= $2"
+    params = [available_from, available_to]
+
+    results = DatabaseConnection.exec_params(sql, params)
+
+    spaces = []
+    results.each { |record| spaces << space_builder(record) }
+    return spaces
+  end
+
   def all_owned_spaces(user_id)
     sql ='SELECT * FROM spaces WHERE user_id = $1;'
     params =[user_id]
