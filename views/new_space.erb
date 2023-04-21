@@ -7,25 +7,37 @@
         <link rel="icon" type="image/x-icon" href="bnb.png" />
     </head>
     <body class="new-space">
+    <nav>
+      <div class="container centre nav-height">
+      <div class="logo">
+        <img class="flair" src="bnb.png" alt="Flair BnB logo">
+        <h1>Create a new Space</h1>
+      </div>
+        <div class="links">
+          <% if session[:email].nil? %>
+          <div class="login navlink"><p><a href="/login">Login</a></p></div>
+          <% else %>
+          <div class="bookings_by navlink"><p><a href="/bookings_by_me">Bookings by me</a></p></div>
+          <div class="bookings_by navlink"><p><a href="/bookings_for_me">Bookings for me</a></p></div>
+          <div class="logout navlink"><p><a href="/logout">logout</a></p></div>
+          <div class="logout navlink"><p><a href="/">Home</a></p></div>
+          <% end %>
+        </div>
+      </div>
+    </nav>
 
     <header>
       <div>
         <p class="secret">Flair BnB was built with love, joy and mutual respect by Sidra, Matt, Natasha, Chris, Sunny and Pablo</p>
       </div>
-      <div class="links">
-        <div class="logout navlink"><p><a href="/">Home</a></p></div>
-            <div class="logout navlink"><p><a href="/logout">Logout</a></p></div>
-  
-        </div>
-    
+
         <% flash.each do |type, message| %>
         <div data-alert class="flash <%= type %> alert-box radius">
             <%= message %>
             <a href="" class="close">&times;</a>
         </div>
         <% end %>
-   
-        <h1>Create a new space</h1>
+
         <form class="new_space_form" method="POST" action="/new_space">
             <label class="form_label">Name </label><input class="new_space_form_input" type="text" name="name"/><br>
             <label>Description </label><input class="new_space_form_input" type="text" name="description"/><br>
