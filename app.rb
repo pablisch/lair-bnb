@@ -167,4 +167,12 @@ class Application < Sinatra::Base
     flash[:booking_denied] = "This booking has been declined"
     redirect "/bookings_for_me"
   end
+
+  post '/delete_booking/:id' do
+    repo = BookingRepository.new
+    repo.delete_booking(params[:id])
+
+    flash[:delete_denied] = "This booking has been deleted"
+    redirect "/bookings_for_me"
+  end
 end

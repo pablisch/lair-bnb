@@ -278,5 +278,23 @@ describe Application do
       expect(response.status).to eq 200
       expect(response.body).to include('<p class="declined">10 May, 2023</p>')
     end
+
+    it "deletes a denied booking from the db from booking for me" do
+      response = post(
+          '/login',
+        email: 'amber@example.com',
+        password: 'Password1'
+        )
+      expect(response.status).to eq(302)
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+
+      response = post('/delete_booking/1')
+      expect(response.status).to eq 302
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+    end
   end
 end
