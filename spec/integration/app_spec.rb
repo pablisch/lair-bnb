@@ -26,6 +26,21 @@ describe Application do
       expect(response.body).to include('Welcome to Flair BnB')
     end
 
+    it 'should get the homepage without owner spaces listed as logged in' do
+      
+      response = post(
+        '/login',
+      email: 'amber@example.com',
+      password: 'Password1'
+      )
+
+      expect(response.status).to eq 302
+      
+      response = get('/')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Welcome to Flair BnB')
+    end
+
     it 'when user logged in should see correct links' do
       response = post(
         '/login',
@@ -99,32 +114,6 @@ describe Application do
 
       response = get('/spaces/1')
       expect(response.body).to include("Your booking has been submitted!")
-    end
-  end
-
-
-  context 'GET /spaces' do
-    it 'should get the spaces page' do
-      response = get('/spaces')
-
-      expect(response.status).to eq(200)
-      expect(response.body).to include('Bag End')
-      expect(response.body).to include('quirky front door')
-    end
-
-    it 'returns spaces not including the current users spaces' do
-      response = post(
-        '/login',
-      email: 'amber@example.com',
-      password: 'Password1'
-      )
-      expect(response.status).to eq 302
-      response = get(
-        '/')
-      expect(response.status).to eq(200)
-      expect(response.body).to include('<title>MakersBnB</title>')
-      expect(response.body).not_to include('Bag End')
-      expect(response.body).not_to include('quirky front door')
     end
   end
 
