@@ -42,7 +42,7 @@
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
                 <p>£<%= booking.price %></p>
                 <p>Booking confirmed for</p>
-                <p><%= booking.booking_date %></p>
+                <p><%= Date.parse(booking.booking_date).strftime("%d %b, %Y") %></p>
               </div>
               <% end %>
             </div>
@@ -56,7 +56,7 @@
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
                 <p>£<%= booking.price %></p>
                 <p>Booking pending for </p>
-                <p><%= booking.booking_date %></p>
+                <p><%= Date.parse(booking.booking_date).strftime("%d %b, %Y") %></p>
               </div>
               <% end %>
             </div>
@@ -70,7 +70,7 @@
                 <h2><a href = "/spaces/<%= booking.space_id %>"><%= booking.name %></a></h2>
                 <p>£<%= booking.price %></p>
                 <p>Booking declined for </p>
-                <p><%= booking.booking_date %></p>
+                <p><%= Date.parse(booking.booking_date).strftime("%d %b, %Y") %></p>
               </div>
               <% end %>
             </div>
