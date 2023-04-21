@@ -45,14 +45,6 @@ class Application < Sinatra::Base
   end
 
   post '/login' do
-    if validation_nil_empty_input(params) ||
-        validation_no_asperand(params[:email]) ||
-          validation_length_of_sting(params[:password]) ||
-            validation_forbidden_char(params)
-      status 400
-      return ''
-    end
-
     email = params[:email]
     password = params[:password]
 
