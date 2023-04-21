@@ -64,11 +64,11 @@
                 <p>Booking pending for</p>
                 <p><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
                 <form method="POST" action="/confirm_booking/<%= booking[4] %>">
-                    <button type="submit">Confirm</button>
+                    <button class="confirm_button" type="submit">Confirm</button>
                 </form>
 
                 <form method="POST" action="/decline_booking/<%= booking[4] %>">
-                    <button type="submit">Decline</button>
+                    <button class="decline_button" type="submit">Decline</button>
                 </form>
               </div>
               <% end %>
