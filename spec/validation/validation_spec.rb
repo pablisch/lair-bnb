@@ -62,18 +62,18 @@ describe Application do
   end
   
   #Validation check not needed anymore for login, could be used elsewhere so leaving for reference.
-  # context 'login must not contain forbidden char' do
-  #   it 'should be false because email contains <>' do
-  #       response = post(
-  #           '/login',
-  #           email: '<amber@example.com>',
-  #           password: 'Password1'
-  #       )
-  #       expect(response.status).to eq(302)
-  #       response = get('/login')
-  #       expect(response.body).to include "You have entered a special character. Try again."
-  #   end
-  # end
+  context 'login must not contain forbidden char' do
+    it 'should be true because email contains ";"' do
+        response = post(
+            '/login',
+            email: ";amber@example.com",
+            password: "Password1"
+        )
+        expect(response.status).to eq(302)
+        response = get('/login')
+        expect(response.body).to include "You have entered a special character. Try again."
+    end
+  end
 
   context 'login should work as inputs are correct' do
     it 'should be true because formatted correctly' do

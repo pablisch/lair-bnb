@@ -26,9 +26,9 @@ module Validation
 
     # forbidden_char not allowed in the input field. 
     # Commented out as not currently used.
-    # def validation_forbidden_char(*input)
-    #     char = ['<', '>',]
-    #     return true if char.any? { |charater| input.include?(charater) }
-    #     false
-    # end
+    def validation_forbidden_char(input)
+        char = ['<', '>', ';']  
+        return true if char.any? { |character|  input.include?(character) }
+        false
+    end
 end

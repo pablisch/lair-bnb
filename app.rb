@@ -61,6 +61,9 @@ class Application < Sinatra::Base
     elsif validation_length_of_sting(params[:password])
       flash[:alert] = "Contact support to strengthen your password."
       return redirect('/login')
+    elsif validation_forbidden_char(params[:email])
+      flash[:alert] = "You have entered a special character. Try again."
+      return redirect('/login')
     elsif user && email == user.email && password == user.password
       session[:email] = user.email
       session[:username] = user.username
