@@ -30,9 +30,9 @@
         <h2>Enter your login details</h2>
             <form method="POST" action="/login" class="right-align">
               <label>Enter your email</label>
-              <input class="text" type="text" name="email" required minlength="5"><br>
+              <input class="text" type="text2" name="email" required minlength="5"><br>
               <label>Enter your password</label>
-              <input class="text" type="text" name="password" required minlength="5"><br>
+              <input class="text" type="text2" name="password" required minlength="5"><br>
               <% if !flash[:alert].nil? %>
                 <div class="validation">
                   <%= flash[:alert] %>
