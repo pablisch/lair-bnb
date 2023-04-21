@@ -276,7 +276,7 @@ describe Application do
 
       response = get('/bookings_for_me')
       expect(response.status).to eq 200
-      expect(response.body).to include '<p>Booking declined for 2023-05-10</p>'
+      expect(response.body).to include('<p class="declined">2023-05-10</p>')
     end
   end
 end
