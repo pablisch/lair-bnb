@@ -151,6 +151,16 @@ RSpec.describe BookingRepository do
       expect(bookings.last.guest_id).to eq 2
     end
   end
+
+  context 'removing old bookings from database' do
+    it 'delete declined bookings' do
+      repo = BookingRepository.new
+      repo.delete_booking(10)
+
+      bookings = repo.all
+      expect(bookings.length).to eq 12
+    end
+  end
 end
 
 

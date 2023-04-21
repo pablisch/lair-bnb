@@ -85,6 +85,9 @@
 
                 <p>Booking declined for</p>
                 <p class="declined"><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
+                <form method="POST" action="/delete_booking/<%= booking[4] %>">
+                    <button type="submit">Bin</button>
+                </form>
               </div>
               <% end %>
             </div>
