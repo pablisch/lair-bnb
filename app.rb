@@ -68,13 +68,6 @@ class Application < Sinatra::Base
       session[:email] = user.email
       session[:username] = user.username
       session[:id] = user.id
-
-    elsif validation_nil_empty_input(params) ||
-        validation_no_asperand(params[:email]) ||
-          validation_length_of_sting(params[:password]) ||
-            validation_forbidden_char(params)
-      status 400
-      return ''
     else
       flash[:alert] = "Username or Password not recognised"
       return redirect('/login')
