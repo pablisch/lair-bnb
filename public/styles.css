@@ -169,11 +169,24 @@ input {
 
 .text {
   font-family: 'Raleway', sans-serif;
+  width: 130px;
+  padding: 3px;
+  margin: 0 0 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.text2 {
+  font-family: 'Raleway', sans-serif;
   width: 200px;
   padding: 3px;
   margin: 0 0 10px 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.space_left {
+  margin-left: 10px;
 }
 
 .button {
@@ -187,8 +200,43 @@ input {
   cursor: pointer;
 }
 
+.confirm_button {
+  background-color: #dbf1d4;
+  color: #7c7c7c;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px 0 10px;
+  border-radius: 4px;
+  border: 1px solid #b1aeae;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.decline_button {
+  background-color: #ffe4e4;
+  color: #7c7c7c;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #b1aeae;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 .button:hover {
   background-color: #6e6e6e;
+  color: #fff;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.confirm_button:hover {
+  background-color: #71d339;
+  color: #fff;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.decline_button:hover {
+  background-color: #ee3636;
   color: #fff;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
 }
