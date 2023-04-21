@@ -51,12 +51,25 @@
 
           <div class="panels">
             <% @spaces.each do |space| %>
+
             <div class="space">
-              <h2><a href = "/spaces/<%= space.id %>"><%= space.name %></a></h2>
-              <p><%= space.description %></p>
-              <p>£<%= space.price %> per night</p>
-              <p>Available from <%= Date.parse(space.available_from).strftime("%d %b, %Y") %> to <%= Date.parse(space.available_to).strftime("%d %b, %Y") %></p>
+              
+
+                <div class="container">
+                
+                  <img src="<%="/images/"+space.id.to_s+".png" %>" class="space-image" style = "width:15%; height:15%;border-radius: 20%;">
+                  
+                  <div class="space-text">
+                    <h2><a href = "/spaces/<%= space.id %>"><%= space.name %></a></h2>
+                    <p><%= space.description %></p>
+                    <p>£<%= space.price %> per night</p>
+                    <p>Available from <%= Date.parse(space.available_from).strftime("%d %b, %Y") %> to <%= Date.parse(space.available_to).strftime("%d %b, %Y") %></p>
+                  </div>
+
+                </div>
+
             </div>
+            
             <% end %>
           </div>
         </div>

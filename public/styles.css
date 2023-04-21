@@ -26,6 +26,16 @@ body {
     align-items: center;
 }
 
+.space-image {
+  width: 20%;
+  float: left;
+}
+
+.space-text {
+  width: 80%;
+  float: right;
+}
+
 .centre {
   max-width: 1100px;
   margin: 0 auto;
