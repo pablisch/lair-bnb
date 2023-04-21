@@ -142,4 +142,12 @@ class Application < Sinatra::Base
     flash[:success] = "This booking has been confirmed"
     redirect "/bookings_for_me"
   end
+
+  post '/decline_booking/:id' do
+    repo = BookingRepository.new
+    repo.update_booking(params[:id], 'denied')
+
+    flash[:success] = "This booking has been declined"
+    redirect "/bookings_for_me"
+  end
 end

@@ -41,8 +41,7 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
                 <p>Booked by: <%= booking[3].username %></p>
-                <p>Booking confirmed for</p>
-                <p><%= booking[2] %></p>
+                <p>Booking confirmed for <%= booking[2] %></p>
               </div>
               <% end %>
             </div>
@@ -55,11 +54,20 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
                 <p>Requested by: <%= booking[3].username %></p>
-                <p>Booking pending for </p>
-                <p><%= booking[2] %></p>
+                <p>Booking pending for <%= booking[2] %></p>
 
                 <form method="POST" action="/confirm_booking/<%= booking[4] %>">
                     <button type="submit">Confirm</button>
+                    <% flash.each do |type, message| %>
+                        <div data-alert class="flash <%= type %> alert-box radius">
+                            <%= message %>
+                            <a href="" class="close">&times;</a>
+                        </div>
+                        <% end %>
+                </form>
+
+                <form method="POST" action="/decline_booking/<%= booking[4] %>">
+                    <button type="submit">Decline</button>
                     <% flash.each do |type, message| %>
                         <div data-alert class="flash <%= type %> alert-box radius">
                             <%= message %>
@@ -79,8 +87,7 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
                 <p>Requested by: <%= booking[3].username %></p>
-                <p>Booking declined for </p>
-                <p><%= booking[2] %></p>
+                <p>Booking declined for <%= booking[2] %></p>
               </div>
               <% end %>
             </div>
