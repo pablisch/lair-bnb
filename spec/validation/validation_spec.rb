@@ -73,6 +73,39 @@ describe Application do
         response = get('/login')
         expect(response.body).to include "You have entered a special character. Try again."
     end
+
+    it 'should be true because email contains "<"' do
+      response = post(
+          '/login',
+          email: "amber<@example.com",
+          password: "Password1"
+      )
+      expect(response.status).to eq(302)
+      response = get('/login')
+      expect(response.body).to include "You have entered a special character. Try again."
+    end
+
+    it 'should be true because email contains ">"' do
+      response = post(
+          '/login',
+          email: "amber@example>.com",
+          password: "Password1"
+      )
+      expect(response.status).to eq(302)
+      response = get('/login')
+      expect(response.body).to include "You have entered a special character. Try again."
+    end
+
+    it 'should be true because email contains ">" and ";"' do
+      response = post(
+          '/login',
+          email: "amber@example>.com;DROP TABLE users;",
+          password: "Password1"
+      )
+      expect(response.status).to eq(302)
+      response = get('/login')
+      expect(response.body).to include "You have entered a special character. Try again."
+    end
   end
 
   context 'login should work as inputs are correct' do
