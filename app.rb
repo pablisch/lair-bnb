@@ -66,24 +66,12 @@ class Application < Sinatra::Base
       flash[:login_error] = "Username or Password not recognised"
       return redirect('/login')
     end
-
     return redirect('/')
   end
 
   get '/logout' do
     session.clear
     redirect ('/')
-  end
-
-  get '/spaces' do # is this route defunct now?
-    repo = SpaceRepository.new
-    if session[:email].nil?
-      @spaces = repo.all()
-    else
-      @spaces = repo.all_except_owner(session[:id])
-    end
-
-    return erb(:spaces)
   end
 
   get '/new_space' do
@@ -144,8 +132,6 @@ class Application < Sinatra::Base
     @confirmed_bookings = repo.bookings_by_me('confirmed', session[:id])
     @pending_bookings = repo.bookings_by_me('pending', session[:id])
     @denied_bookings = repo.bookings_by_me('denied', session[:id])
-
-
 
     return erb(:bookings_by_me)
   end
