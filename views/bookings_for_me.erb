@@ -41,7 +41,8 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
                 <p>Booked by: <%= booking[3].username %></p>
-                <p>Booking confirmed for <%= booking[2] %></p>
+                <p>Booking confirmed for 
+                <p><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
               </div>
               <% end %>
             </div>
@@ -60,8 +61,8 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
                 <p>Requested by: <%= booking[3].username %></p>
-                <p>Booking pending for <%= booking[2] %></p>
-
+                <p>Booking pending for</p>
+                <p><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
                 <form method="POST" action="/confirm_booking/<%= booking[4] %>">
                     <button type="submit">Confirm</button>
                 </form>
@@ -81,7 +82,8 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
                 <p>Requested by: <%= booking[3].username %></p>
-                <p>Booking declined for <%= booking[2] %></p>
+                <p>Booking declined for</p>
+                <p><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
               </div>
               <% end %>
             </div>
