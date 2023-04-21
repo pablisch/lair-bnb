@@ -104,11 +104,11 @@ describe Application do
       booking.status = "pending"
       booking.space_id = 1
       booking.guest_id = 2
-      
+
       booking_repo.create(booking)
       all_bookings = booking_repo.all
-      expect(all_bookings.last.booking_date).to eq('2023-05-03') 
-      expect(all_bookings.last.status).to eq('pending') 
+      expect(all_bookings.last.booking_date).to eq('2023-05-03')
+      expect(all_bookings.last.status).to eq('pending')
       expect(all_bookings.last.space_id).to eq(1)
       expect(response.status).to eq(302)
 
@@ -125,7 +125,7 @@ describe Application do
       expect(response.body).to include('<h2>Enter your login details</h2>')
     end
   end
-  
+
   context 'POST /login' do
     it 'post the users input in the form and redirects to spaces' do
       response = post(
@@ -212,12 +212,71 @@ describe Application do
   context 'POST /' do
     it 'filters wuth date params and returns spaces matching date range' do
       response = post(
-        '/', 
+        '/',
         available_from: '2023-05-01',
         available_to: '2023-05-17'
       )
-      
+
       expect(response.status).to eq(200)
+    end
+  end
+
+  context 'GET /bookings_for_me' do
+    it 'returns list of confirmed, pending and denied bookings for spaces owned by logged in user' do
+      response = post(
+          '/login',
+        email: 'amber@example.com',
+        password: 'Password1'
+        )
+
+      expect(response.status).to eq(302)
+
+      response = get('/bookings_for_me')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include 'Requested by: Billy'
+    end
+  end
+
+  context 'POST /confirm_booking/:id' do
+    it "updates a booking's status from pending to confirmed" do
+      response = post(
+          '/login',
+        email: 'amber@example.com',
+        password: 'Password1'
+        )
+      expect(response.status).to eq(302)
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+
+      response = post('/confirm_booking/1')
+      expect(response.status).to eq 302
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+      expect(response.body).to include 'Booked by: Billy'
+    end
+  end
+
+  context 'POST /decline_booking/:id' do
+    it "updates a booking's status from pending to denied" do
+      response = post(
+          '/login',
+        email: 'amber@example.com',
+        password: 'Password1'
+        )
+      expect(response.status).to eq(302)
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+
+      response = post('/decline_booking/1')
+      expect(response.status).to eq 302
+
+      response = get('/bookings_for_me')
+      expect(response.status).to eq 200
+      expect(response.body).to include '<p>Booking declined for 2023-05-10</p>'
     end
   end
 end

@@ -30,11 +30,11 @@ class Application < Sinatra::Base
   end
 
   post '/' do
-    return redirect('/') if validation_nil_empty_input(params) 
+    return redirect('/') if validation_nil_empty_input(params)
 
     available_from = params[:available_from]
     available_to = params[:available_to]
-    
+
     repo = SpaceRepository.new
     @spaces = repo.get_available_dates_filter(available_from, available_to)
     return erb(:index)
@@ -56,9 +56,9 @@ class Application < Sinatra::Base
       session[:username] = user.username
       session[:id] = user.id
 
-    elsif validation_nil_empty_input(params) || 
-        validation_no_asperand(params[:email]) || 
-          validation_length_of_sting(params[:password]) || 
+    elsif validation_nil_empty_input(params) ||
+        validation_no_asperand(params[:email]) ||
+          validation_length_of_sting(params[:password]) ||
             validation_forbidden_char(params)
       status 400
       return ''
@@ -134,5 +134,30 @@ class Application < Sinatra::Base
     @denied_bookings = repo.bookings_by_me('denied', session[:id])
 
     return erb(:bookings_by_me)
+  end
+
+  get '/bookings_for_me' do
+    repo = BookingRepository.new
+    @confirmed_bookings = repo.filter_owned('confirmed', session[:id])
+    @pending_bookings = repo.filter_owned('pending', session[:id])
+    @denied_bookings = repo.filter_owned('denied', session[:id])
+
+    return erb(:bookings_for_me)
+  end
+
+  post '/confirm_booking/:id' do
+    repo = BookingRepository.new
+    repo.update_booking(params[:id], 'confirmed')
+
+    flash[:booking_confirmed] = "This booking has been confirmed"
+    redirect "/bookings_for_me"
+  end
+
+  post '/decline_booking/:id' do
+    repo = BookingRepository.new
+    repo.update_booking(params[:id], 'denied')
+
+    flash[:booking_denied] = "This booking has been declined"
+    redirect "/bookings_for_me"
   end
 end
