@@ -16,7 +16,7 @@ RSpec.describe BookingRepository do
     it "lists all bookings" do
       repo = BookingRepository.new
       result = repo.all
-      expect(result.length).to eq 14
+      expect(result.length).to eq 13
       expect(result.last).to (having_attributes(
         booking_date: "2023-05-14",
         status: "denied",
@@ -39,7 +39,7 @@ RSpec.describe BookingRepository do
       new_booking = repo.create(booking)
       all_bookings = repo.all
 
-      expect(all_bookings.length).to eq 15
+      expect(all_bookings.length).to eq 14
       expect(all_bookings.last.booking_date).to eq "2023-05-01"
       expect(all_bookings.last.space_id).to eq 1
     end
@@ -62,7 +62,7 @@ RSpec.describe BookingRepository do
 
       all_bookings = repo.all
 
-      expect(all_bookings.length).to eq 16
+      expect(all_bookings.length).to eq 15
       expect(all_bookings.last.booking_date).to eq "2023-08-04"
       expect(all_bookings.last.space_id).to eq 1
       expect(all_bookings).to include(having_attributes(
@@ -102,7 +102,7 @@ RSpec.describe BookingRepository do
       repo = BookingRepository.new
       confirmed_bookings = repo.bookings_by_me("confirmed", 1)
 
-      expect(confirmed_bookings[1].booking_date).to include('2023-05-07')
+      expect(confirmed_bookings[1].booking_date).to include('2023-05-22')
       expect(confirmed_bookings[1].name).to include('Moria')
     end
   end
@@ -113,9 +113,9 @@ RSpec.describe BookingRepository do
 
       result = repo.filter_owned('pending', 2)
 
-      expect(result.length).to eq 3
+      expect(result.length).to eq 2
       expect(result[0][1]).to eq 'Winterfell'
-      expect(result[0][2]).to eq '2023-05-11'
+      expect(result[0][2]).to eq '2023-05-07'
       expect(result[0][3].username).to eq 'Amber'
     end
 
