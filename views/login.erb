@@ -33,8 +33,10 @@
               <input class="text" type="text2" name="email" required minlength="5"><br>
               <label>Enter your password</label>
               <input class="text" type="text2" name="password" required minlength="5"><br>
-              <% if !flash[:login_error].nil? %>
-                <div class="validation"><%= flash[:login_error] %></div><br><br>
+              <% if !flash[:alert].nil? %>
+                <div class="validation">
+                  <%= flash[:alert] %>
+                </div><br><br>
               <% end %>     
               <input class="button" type="submit" value="Login">
             </form>

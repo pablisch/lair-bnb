@@ -12,18 +12,20 @@ describe Application do
   let(:app) { Application.new }
 
   context 'checking the inputs for strings' do
-    it 'responds with 400 status if parameters are invalid' do
+    it 'responds with 302 status if parameters are invalid' do
         response = post(
             '/login',
             email: '',
             password: ''
         )
-        expect(response.status).to eq(400)
+        expect(response.status).to eq(302)
+        response = get('/login')
+        expect(response.body).to include "Please fill in all required fields."
     end
   end
 
   context 'checking the inputs on post /' do
-    it 'responds with 400 status if parameters are invalid' do
+    it 'responds with 302 status if parameters are invalid' do
         response = post(
             '/',
             available_from: '',
@@ -34,13 +36,15 @@ describe Application do
   end
   
   context 'password strength requirements' do
-    it 'responds 400 if length not greater than 8' do
+    it 'responds 302 if length not greater than 8' do
         response = post(
             '/login',
             email: 'amber@example.com',
             password: 'aaaa'
         )
-        expect(response.status).to eq(400)
+        expect(response.status).to eq(302)
+        response = get('/login')
+        expect(response.body).to include "Contact support to strengthen your password."
     end
   end
 
@@ -51,20 +55,60 @@ describe Application do
             email: 'amberexample.com',
             password: 'Password1'
         )
-        expect(response.status).to eq(400)
+        expect(response.status).to eq(302)
+        response = get('/login')
+        expect(response.body).to include "Please enter a valid email address."
     end
   end
   
+  #Validation check not needed anymore for login, could be used elsewhere so leaving for reference.
   context 'login must not contain forbidden char' do
-    it 'should be false because email contains <>' do
+    it 'should be true because email contains ";"' do
         response = post(
             '/login',
-            email: '<amberexample.com>',
-            password: 'Password1'
+            email: ";amber@example.com",
+            password: "Password1"
         )
-        expect(response.status).to eq(400)
+        expect(response.status).to eq(302)
+        response = get('/login')
+        expect(response.body).to include "You have entered a special character. Try again."
     end
 
+    it 'should be true because email contains "<"' do
+      response = post(
+          '/login',
+          email: "amber<@example.com",
+          password: "Password1"
+      )
+      expect(response.status).to eq(302)
+      response = get('/login')
+      expect(response.body).to include "You have entered a special character. Try again."
+    end
+
+    it 'should be true because email contains ">"' do
+      response = post(
+          '/login',
+          email: "amber@example>.com",
+          password: "Password1"
+      )
+      expect(response.status).to eq(302)
+      response = get('/login')
+      expect(response.body).to include "You have entered a special character. Try again."
+    end
+
+    it 'should be true because email contains ">" and ";"' do
+      response = post(
+          '/login',
+          email: "amber@example>.com;DROP TABLE users;",
+          password: "Password1"
+      )
+      expect(response.status).to eq(302)
+      response = get('/login')
+      expect(response.body).to include "You have entered a special character. Try again."
+    end
+  end
+
+  context 'login should work as inputs are correct' do
     it 'should be true because formatted correctly' do
       response = post(
           '/login',
@@ -72,6 +116,8 @@ describe Application do
           password: 'Password1'
       )
       expect(response.status).to eq(302)
+      response = get('/')
+      expect(response.body).to include "Amber"
     end
   end
 end

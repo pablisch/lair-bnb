@@ -17,6 +17,7 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
     register Sinatra::Flash
     enable :sessions
+    also_reload 'lib/validations'
   end
 
   get '/' do
@@ -51,19 +52,25 @@ class Application < Sinatra::Base
     repo = UserRepository.new
     user = repo.find_by_email(email)
 
-    if user && email == user.email && password == user.password
+    
+    if validation_nil_empty_input(params)
+      flash[:alert] = "Please fill in all required fields."
+      return redirect('/login')
+    elsif validation_no_asperand(params[:email])
+      flash[:alert] = "Please enter a valid email address."
+      return redirect('/login')
+    elsif validation_length_of_string(params[:password])
+      flash[:alert] = "Contact support to strengthen your password."
+      return redirect('/login')
+    elsif validation_forbidden_char(params[:email])
+      flash[:alert] = "You have entered a special character. Try again."
+      return redirect('/login')
+    elsif user && email == user.email && password == user.password
       session[:email] = user.email
       session[:username] = user.username
       session[:id] = user.id
-
-    elsif validation_nil_empty_input(params) ||
-        validation_no_asperand(params[:email]) ||
-          validation_length_of_sting(params[:password]) ||
-            validation_forbidden_char(params)
-      status 400
-      return ''
     else
-      flash[:login_error] = "Username or Password not recognised"
+      flash[:alert] = "Username or Password not recognised"
       return redirect('/login')
     end
     return redirect('/')

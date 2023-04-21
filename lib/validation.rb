@@ -12,8 +12,8 @@ module Validation
         false
     end
 
-    # validation_length_of_sting used to stop large sting insertion.
-    def validation_length_of_sting(input)
+    # validation_length_of_string used to stop large sting insertion.
+    def validation_length_of_string(input)
         return false if input.length.between?(8, 25)
         true
     end
@@ -25,9 +25,9 @@ module Validation
     end
 
     # forbidden_char not allowed in the input field.
-    def validation_forbidden_char(*input)
-        char = ['<', '>']
-        return true if char.any? { |charater| input.include?(charater) }
+    def validation_forbidden_char(input)
+        char = ['<', '>', ';']  
+        return true if char.any? { |character|  input.include?(character) }
         false
     end
 end
