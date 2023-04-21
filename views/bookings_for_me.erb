@@ -82,6 +82,7 @@
               <div class="space">
                 <h2><a href = "/spaces/<%= booking[0] %>"><%= booking[1] %></a></h2>
                 <p>Requested by: <%= booking[3].username %></p>
+
                 <p>Booking declined for</p>
                 <p><%= Date.parse(booking[2]).strftime("%d %b, %Y") %></p>
               </div>
