@@ -1,19 +1,19 @@
 TRUNCATE TABLE users, spaces, bookings RESTART IDENTITY;
 
 INSERT INTO users (username, email, password) VALUES
-('Amber', 'amber@example.com', 'Password1'),
-('Billy', 'billy@example.com', 'Password2'),
-('Caleb', 'caleb@example.com', 'Password3'),
-('Dennis', 'dennis@example.com', 'Password4'),
-('Emily', 'emily@example.com', 'Password5'),
-('Faizah', 'faizah@example.com', 'Password6'),
-('Greta', 'greta@example.com', 'Password7'),
-('Hande', 'hande@example.com', 'Password8')
+('Bilbo', 'hobbit@example.com', 'Password1'),
+('Sauron', 'lostmyring@example.com', 'Password2'),
+('Gollum', 'cavedweller@example.com', 'Password3'),
+('Aragorn', 'kingofmen@example.com', 'Password4'),
+('Treebeard', 'herdtrees@example.com', 'Password5'),
+('Smaug', 'ieatgold@example.com', 'Password6'),
+('Arwen', 'areosmith_fan@example.com', 'Password7'),
+('Elrond', 'elf_agent@example.com', 'Password8')
 ;
 
 INSERT INTO spaces (name, description, price, available_from, available_to, user_id) VALUES
 ('Bag End', 'Charming and cosy with a quirky front door', 70, '2023-05-01', '2023-05-15', 1),
-('Barad-dûr', 'Plenty of rustic charm, open countryside and extra firewood available.', 120, '2023-05-03', '2023-05-17', 2),
+('Barad-dûr', 'Plenty of rustic charm, open countryside and an all new menu!', 120, '2023-05-03', '2023-05-17', 2),
 ('Moria', 'Cavernous dwelling with plenty to explore and a huge open fire.', 180, '2023-05-06', '2023-05-20', 3),
 ('Dead Marshes', 'Charming and full of character. Sleeping room for many guests', 95, '2023-05-05', '2023-05-19', 1),
 ('Orthanc', 'Stunning white tower among a lively woodland setting.', 200, '2023-05-02', '2023-05-16', 5),

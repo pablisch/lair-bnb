@@ -112,12 +112,12 @@ describe Application do
     it 'should be true because formatted correctly' do
       response = post(
           '/login',
-          email: 'amber@example.com',
+          email: 'hobbit@example.com',
           password: 'Password1'
       )
       expect(response.status).to eq(302)
       response = get('/')
-      expect(response.body).to include "Amber"
+      expect(response.body).to include "Bilbo"
     end
   end
 end

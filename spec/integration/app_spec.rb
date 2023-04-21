@@ -44,7 +44,7 @@ describe Application do
     it 'when user logged in should see correct links' do
       response = post(
         '/login',
-      email: 'amber@example.com',
+      email: 'hobbit@example.com',
       password: 'Password1'
       )
       expect(response.status).to eq 302
@@ -56,13 +56,13 @@ describe Application do
     it 'when user logged in should see personalised message' do
       response = post(
         '/login',
-      email: 'amber@example.com',
+      email: 'hobbit@example.com',
       password: 'Password1'
       )
       expect(response.status).to eq 302
       response = get('/')
       expect(response.status).to eq(200)
-      expect(response.body).to include('Explore homes for your next adventure, Amber!')
+      expect(response.body).to include('Explore homes for your next adventure, Bilbo!')
     end
 
     it 'when user not logged in should see correct links' do
@@ -92,7 +92,7 @@ describe Application do
     it 'should return the form of a new booking' do
       response = post(
         '/login',
-      email: 'amber@example.com',
+      email: 'hobbit@example.com',
       password: 'Password1'
       )
       response = get('/')
@@ -130,7 +130,7 @@ describe Application do
     it 'post the users input in the form and redirects to spaces' do
       response = post(
         '/login',
-      email: 'amber@example.com',
+      email: 'hobbit@example.com',
       password: 'Password1'
       )
 
@@ -146,7 +146,7 @@ describe Application do
     it 'user enters wrong email address or password, redirects to fail' do
       response = post(
         '/login',
-      email: 'amber@example.com',
+      email: 'hobbit@example.com',
       password: 'Password'
       )
       expect(response.status).to eq(302)
@@ -157,7 +157,7 @@ describe Application do
 
   context "GET /logout" do
     it "redirects the user to the spaces page without any logged in functionality" do
-      post '/login', params = { email: 'amber@example.com', password: 'Password1'}
+      post '/login', params = { email: 'hobbit@example.com', password: 'Password1'}
       get '/logout'
 
       # Expect the response to have a 302 status code (redirect)
@@ -184,7 +184,7 @@ describe Application do
     it 'sends the form and creates a new space in the database' do
       response = post(
         '/login',
-      email: 'amber@example.com',
+      email: 'hobbit@example.com',
       password: 'Password1'
       )
 
@@ -225,7 +225,7 @@ describe Application do
     it 'returns list of confirmed, pending and denied bookings for spaces owned by logged in user' do
       response = post(
           '/login',
-        email: 'amber@example.com',
+        email: 'hobbit@example.com',
         password: 'Password1'
         )
 
@@ -234,7 +234,7 @@ describe Application do
       response = get('/bookings_for_me')
 
       expect(response.status).to eq 200
-      expect(response.body).to include 'Requested by: Billy'
+      expect(response.body).to include 'Requested by: Sauron'
     end
   end
 
@@ -242,7 +242,7 @@ describe Application do
     it "updates a booking's status from pending to confirmed" do
       response = post(
           '/login',
-        email: 'amber@example.com',
+        email: 'hobbit@example.com',
         password: 'Password1'
         )
       expect(response.status).to eq(302)
@@ -255,7 +255,7 @@ describe Application do
 
       response = get('/bookings_for_me')
       expect(response.status).to eq 200
-      expect(response.body).to include 'Booked by: Billy'
+      expect(response.body).to include 'Booked by: Sauron'
     end
   end
 
@@ -263,7 +263,7 @@ describe Application do
     it "updates a booking's status from pending to denied" do
       response = post(
           '/login',
-        email: 'amber@example.com',
+        email: 'hobbit@example.com',
         password: 'Password1'
         )
       expect(response.status).to eq(302)
@@ -282,7 +282,7 @@ describe Application do
     it "deletes a denied booking from the db from booking for me" do
       response = post(
           '/login',
-        email: 'amber@example.com',
+        email: 'hobbit@example.com',
         password: 'Password1'
         )
       expect(response.status).to eq(302)
