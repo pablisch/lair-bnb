@@ -109,9 +109,9 @@ RSpec.describe BookingRepository do
       result = repo.filter_owned('pending', 2)
 
       expect(result.length).to eq 2
-      expect(result[0][1]).to eq 'Winterfell'
+      expect(result[0][1]).to eq 'Barad-dûr' #
       expect(result[0][2]).to eq '2023-05-07'
-      expect(result[0][3].username).to eq 'Amber'
+      expect(result[0][3].username).to eq 'Bilbo'
     end
 
     it "returns an array of bookings which have confirmed requests" do
@@ -120,9 +120,9 @@ RSpec.describe BookingRepository do
       result = repo.filter_owned('confirmed', 1)
 
       expect(result.length).to eq 3
-      expect(result[0][1]).to eq 'The Burrow'
+      expect(result[0][1]).to eq 'Dead Marshes' #
       expect(result[0][2]).to eq '2023-05-07'
-      expect(result[0][3].username).to eq 'Amber'
+      expect(result[0][3].username).to eq 'Bilbo'
     end
   end
 

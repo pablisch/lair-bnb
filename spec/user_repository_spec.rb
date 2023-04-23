@@ -13,10 +13,10 @@ describe UserRepository do
 
   it 'finds a users details based on email address' do
     repo = UserRepository.new
-    user = repo.find_by_email('amber@example.com')
+    user = repo.find_by_email('hobbit@example.com')
 
-    expect(user.username).to eq('Amber')
-    expect(user.email).to eq('amber@example.com')
+    expect(user.username).to eq('Bilbo')
+    expect(user.email).to eq('hobbit@example.com')
     expect(user.id).to eq(1)
   end
 
@@ -24,7 +24,7 @@ describe UserRepository do
     repo = UserRepository.new
     user = repo.find_by_id(1)
     
-    expect(user.username).to eq('Amber')
-    expect(user.email).to eq('amber@example.com')
+    expect(user.username).to eq('Bilbo')
+    expect(user.email).to eq('hobbit@example.com')
   end
 end
