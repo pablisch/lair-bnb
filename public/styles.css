@@ -62,7 +62,7 @@ a:hover {
   left: 25%;
   top: 10%;
   transform: translate(-50%, -50%);
-  animation: rotate 15s infinite linear;
+  animation: rotate 12s infinite linear;
 }
 
 .red_ring {
@@ -72,7 +72,7 @@ a:hover {
   left:30%;
   top: 17%;
   transform: translate(-50%, -50%);
-  animation: rotate_cw 18s infinite linear;
+  animation: rotate_cw 21s infinite linear;
 }
 
 .yellow_ring {
