@@ -63,6 +63,7 @@ a:hover {
   top: 10%;
   transform: translate(-50%, -50%);
   animation: rotate 12s infinite linear;
+  z-index: -1; 
 }
 
 .red_ring {
@@ -73,6 +74,7 @@ a:hover {
   top: 17%;
   transform: translate(-50%, -50%);
   animation: rotate_cw 21s infinite linear;
+  z-index: 1; 
 }
 
 .yellow_ring {
@@ -83,6 +85,7 @@ a:hover {
   top: 24%;
   transform: translate(-50%, -50%);
   animation: rotate 23s infinite linear;
+  z-index: -1; 
 }
 
 @keyframes rotate {

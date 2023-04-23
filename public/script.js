@@ -51,7 +51,7 @@ function opaque() {
   black_ring.style.opacity = '0';
   black_ring.style.transition = 'opacity 9s ease';
   red_ring.style.opacity = '0';
-  red_ring.style.transition = 'opacity 8s ease';
+  red_ring.style.transition = 'opacity 16s ease';
   yellow_ring.style.opacity = '0';
   yellow_ring.style.transition = 'opacity 12s ease';
   nav.style.background = '#fff';
