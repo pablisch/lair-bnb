@@ -5,9 +5,10 @@
         <link rel="stylesheet" href="/styles.css" >
         <link rel="icon" type="image/x-icon" href="bnb.png" />
     </head>
-    <body>
+    <body class="body">
 
-      <nav>
+      <%# NAVBAR %>
+      <nav class="nav">
       <div class="container centre nav-height">
         <div class="logo">
         <img class="flair" src="bnb.png" alt="Flair BnB logo">
@@ -28,18 +29,25 @@
 
       <div class="line"></div>
 
+      <%# MAIN BODY %>
       <header>
+      <img class="black_ring" src="images/ring_cycle.png" alt="">
+      <img class="yellow_ring" src="images/ring_yellow.png" alt="">
+      <img class="red_ring" src="images/ring_red.png" alt="">
 
       <div class="status">
       </div>
 
+      <%# SECRET %>
       <div>
-        <p class="secret">Lair BnB was built with love, joy and mutual respect by Sidra, Matt, Natasha, Chris, Sunny and Pablo</p>
+        <p class="secret">This darkness and despair was forged by Sidra, Matt, Natasha, Chris, Sunny and Pablo</p>
       </div>
 
         <% unless session[:email].nil? %>
           <h3>Explore homes for your next adventure, <%= session[:username] %>!</h3>
         <% end %>
+
+        <%# DATE PICKER %>
         <div class="centre">
         <div class="container column">
         <form method="POST" action="/">
@@ -56,7 +64,7 @@
           </div>
         </form>
 
-
+          <%# SPACES %>
           <div class="panels">
             <% @spaces.each do |space| %>
 
