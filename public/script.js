@@ -39,8 +39,8 @@ function fade() {
   body.style.transition = 'background 7s ease';
   panels.style.opacity = '0';
   panels.style.transition = 'opacity 3s ease';
-  spaces.style.opacity = '0';
-  spaces.style.transition = 'opacity 3s ease';
+  // spaces.style.opacity = '0';
+  // spaces.style.transition = 'opacity 3s ease';
   dates.style.opacity = '0';
   dates.style.transition = 'opacity 3s ease';
 }
@@ -63,8 +63,8 @@ function opaque() {
   body.style.transition = 'background 10s ease';
   panels.style.opacity = '1';
   panels.style.transition = 'opacity 2s ease';
-  spaces.style.opacity = '0.5';
-  spaces.style.transition = 'opacity 10s ease';
+  // spaces.style.opacity = '1';
+  // spaces.style.transition = 'opacity 10s ease';
   dates.style.opacity = '1';
   dates.style.transition = 'opacity 2s ease';
 }
