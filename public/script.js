@@ -6,7 +6,8 @@ const secret = document.querySelector(".secret");
 const black_ring = document.querySelector(".black_ring");
 const red_ring = document.querySelector(".red_ring");
 const yellow_ring = document.querySelector(".yellow_ring");
-const spaces = document.querySelector(".panels");
+const panels = document.querySelector(".panels");
+const spaces = document.querySelector(".space");
 const dates = document.querySelector(".date_picker");
 
 
@@ -36,6 +37,8 @@ function fade() {
   nav.style.transition = 'background 10s ease';
   body.style.background = '#0b0b0b';
   body.style.transition = 'background 7s ease';
+  panels.style.opacity = '0';
+  panels.style.transition = 'opacity 3s ease';
   spaces.style.opacity = '0';
   spaces.style.transition = 'opacity 3s ease';
   dates.style.opacity = '0';
@@ -58,8 +61,10 @@ function opaque() {
   nav.style.transition = 'background 3s ease';
   body.style.background = '#f5f4f4';
   body.style.transition = 'background 10s ease';
-  spaces.style.opacity = '1';
-  spaces.style.transition = 'opacity 2s ease';
+  panels.style.opacity = '1';
+  panels.style.transition = 'opacity 2s ease';
+  spaces.style.opacity = '0.5';
+  spaces.style.transition = 'opacity 10s ease';
   dates.style.opacity = '1';
   dates.style.transition = 'opacity 2s ease';
 }
