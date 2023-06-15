@@ -55,3 +55,5 @@ and assisted by:
 
 Homepage:
 [](images/lair-bnb-homepage.png)
+
+[lair](images/lair-bnb-lair-page.png)
