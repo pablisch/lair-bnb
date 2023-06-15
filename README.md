@@ -1,4 +1,17 @@
-# MakersBnB
+# Lair BnB
+
+### Setup and run tests
+```bash
+# Clone [repo](https://github.com/pablisch/lair-bnb) and install gems
+bundle install
+# To run tests
+rspec
+# To run the server (better to do this in a separate terminal)
+rackup
+# Open browser and go to localhost:9292
+```
+
+The first engineering project on the Makers Software Development course. The aim was to build a clone of AirBnB using Ruby, Sinatra, Postgres and RSpec.
 
 ### Database information
 
@@ -21,13 +34,6 @@ psql -h 127.0.0.1 makersbnb_test < spec/tables.sql
 psql -h 127.0.0.1 makersbnb_test < spec/seeds.sql
  ```
 
-### Setup and run tests
-```
-# Clone [repo](https://github.com/pablisch/makersbnb) and install gems
-bundle install
-# To run tests
-rspec
-```
 ### Technologies used in this project
 
 * Ruby
@@ -38,27 +44,10 @@ rspec
 * Git
 * CSS
 * Postgres
+* Javascript
 
 and assisted by:
 * GitHub
 * Postman
 * TablePlus
 
-# MakersBnB Project Seed instructions
-
-This repo contains the seed codebase for the MakersBnB project in Ruby (using Sinatra and RSpec).
-
-Someone in your team should fork this seed repo to their Github account. Everyone in the team should then clone this fork to their local machine to work on it.
-
-## Setup
-
-```bash
-# Install gems
-bundle install
-
-# Run the tests
-rspec
-
-# Run the server (better to do this in a separate terminal).
-rackup
-```
