@@ -65,3 +65,15 @@ and assisted by:
 #### Login page:
 ![Login](/public/images/lair-bnb-login.png)
 
+#### Bilbo's logged in Homepage:
+![Bilbo's Homepage](/public/images/lair-bnb-bilbo-homepage.png)
+
+#### Bookings by Bilbo:
+![Bilbo's Bookings](/public/images/lair-bnb-bookings-by-me.png)
+
+#### Bookings for Bilbo's lairs:
+![Bilbo's Bookings](/public/images/lair-bnb-bookings-for-me.png)
+
+#### Create a new Lair:
+![Create a new Lair](/public/images/lair-bnb-new-lair.png)
+
