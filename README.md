@@ -54,7 +54,7 @@ and assisted by:
 ### Images of app in use
 
 Homepage:
-![Homepage](images/lair-bnb-homepage.png)
+![Homepage](/images/lair-bnb-homepage.png)
 
 [lair](images/lair-bnb-lair-page.png)
 
