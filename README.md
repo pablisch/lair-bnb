@@ -54,10 +54,10 @@ and assisted by:
 ### Images of app in use
 
 Homepage:
-[](images/lair-bnb-homepage.png)
+![Homepage](images/lair-bnb-homepage.png)
 
 [lair](images/lair-bnb-lair-page.png)
 
 <!-- add image using public/images/lair-bnb-homepage.png -->
-[![lair-bnb-homepage.png]
+[!lair-bnb-homepage.png]
 
