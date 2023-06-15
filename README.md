@@ -53,11 +53,15 @@ and assisted by:
 
 ### Images of app in use
 
-Homepage:
-![Homepage](/images/lair-bnb-homepage.png)
+#### Homepage:
+![Homepage](/public//images/lair-bnb-homepage.png)
 
-[lair](images/lair-bnb-lair-page.png)
+#### Secret Message page:
+![Secret Message](/public/images/lair-bnb-secret-message.png)
 
-<!-- add image using public/images/lair-bnb-homepage.png -->
-[!lair-bnb-homepage.png]
+#### Single Lair page:
+![Lair](/public/images/lair-bnb-lair-page.png)
+
+#### Login page:
+![Login](/public/images/lair-bnb-login.png)
 
