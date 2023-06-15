@@ -57,3 +57,7 @@ Homepage:
 [](images/lair-bnb-homepage.png)
 
 [lair](images/lair-bnb-lair-page.png)
+
+<!-- add image using public/images/lair-bnb-homepage.png -->
+[![lair-bnb-homepage.png]
+
