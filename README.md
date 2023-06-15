@@ -54,4 +54,4 @@ and assisted by:
 ### Images of app in use
 
 Homepage:
-[](laib-bnb-homepage.png)
+[](images/laib-bnb-homepage.png)
