@@ -1,5 +1,7 @@
 # Lair BnB
 
+The first engineering project on the Makers Software Development course. The aim was to build a clone of AirBnB using Ruby, Sinatra, Postgres and RSpec.
+
 ### Setup and run tests
 ```bash
 # Clone [repo](https://github.com/pablisch/lair-bnb) and install gems
@@ -10,8 +12,6 @@ rspec
 rackup
 # Open browser and go to localhost:9292
 ```
-
-The first engineering project on the Makers Software Development course. The aim was to build a clone of AirBnB using Ruby, Sinatra, Postgres and RSpec.
 
 ### Database information
 
