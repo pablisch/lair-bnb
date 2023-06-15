@@ -51,3 +51,7 @@ and assisted by:
 * Postman
 * TablePlus
 
+### Images of app in use
+
+Homepage:
+[](laib-bnb-homepage.png)
