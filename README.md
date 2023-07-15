@@ -2,7 +2,7 @@
 
 The first engineering project on the Makers Software Development course. The aim was to build a clone of AirBnB using Ruby, Sinatra, Postgres and RSpec.
 
-### Setup and run tests
+### Setup, run tests and run app
 ```bash
 # Clone [repo](https://github.com/pablisch/lair-bnb) and install gems
 bundle install
@@ -12,6 +12,23 @@ rspec
 rackup
 # Open browser and go to localhost:9292
 ```
+Example login details:
+
+| Username        | Email           | Password  |
+| --------------- | --------------- | --------- |
+| Bilbo | `hobbit@example.com` | `Password1` |
+| Sauron | `lostmyring@example.com` | `Password2` |
+| Gollum | `cavedweller@example.com` | `Password3` |
+
+### Testing and test coverage
+
+```bash
+# To run tests
+rspec
+```
+The test suite includes 50 unit and integration tests giving 100% coverage.
+
+![test coverage](/public/images/lair-bnb-tests.png)
 
 ### Database information
 
